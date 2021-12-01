@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$dbname = "testdb";
+$dbname = "uni_portal";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -16,7 +16,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT ID, FirstName, LastName FROM exampletable";
+$sql = "SELECT ID, FirstName, LastName FROM accounts";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
