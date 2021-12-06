@@ -1,32 +1,13 @@
-<?php
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "uni_portal";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT ID, FirstName, LastName FROM accounts";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["ID"]. " - Name: " . $row["FirstName"]. " " . $row["LastName"]. "<br>";
-  }
-} else {
-  echo "0 results";
-}
-$conn->close();
-
-?>
+<html>
+<form action="/create_account.php" method="post">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" value="First Name" name="phpfname"><br><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" value="Last Name" name="phplname"><br><br>
+    <label for="pwd">Password:</label><br>
+    <input type="password" id="pwd" value="" name="phppwd"><br><br>
+    <input type="radio" name="student0teacher1" value="student" name="phpstudentradio">Student<br>
+    <input type="radio" name="student0teacher1" value="teacher" name="phpteacherradio">Teacher<br><br>
+    <input type="submit" value="Submit"><br>
+</form>
+</html>
