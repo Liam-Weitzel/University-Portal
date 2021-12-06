@@ -6,8 +6,8 @@
     <input type="text" id="lname" value="Last Name" name="phplname"><br><br>
     <label for="pwd">Password:</label><br>
     <input type="password" id="pwd" value="" name="phppwd"><br><br>
-    <input type="radio" name="student0teacher1" value="student" name="phpstudentradio">Student<br>
-    <input type="radio" name="student0teacher1" value="teacher" name="phpteacherradio">Teacher<br><br>
+    <input type="radio" name="phpstudentteacherradio" value="0">Student<br>
+    <input type="radio" name="phpstudentteacherradio" value="1">Teacher<br><br>
     <input type="submit" value="Submit"><br>
 </form>
 </html>

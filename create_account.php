@@ -5,21 +5,15 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "uni_portal";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+include('dbconnect.php');
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['phpfname'])) {
     //INSERT DATA INTO DB
-    $sqlInsertTestAccount = "INSERT INTO `accounts` (`ID`, `FirstName`, `LastName`, `Hash`, `Salt`, `Student0Teacher1`) VALUES (NULL, 'test', 'test', 'test', 'test', '0') ";
+    $salt = "saltxD";
+    $passwordsalted = $_POST['phppwd'] . $salt;
+    $passwordhashed = $passwordsalted . "soEncrypted";
+
+    $sqlInsertTestAccount = "INSERT INTO `accounts` (`ID`, `FirstName`, `LastName`, `Hash`, `Salt`, `Student0Teacher1`) VALUES (NULL, '" . $_POST['phpfname'] . "', '" . $_POST['phplname'] . "', '" . $passwordhashed . "', '" . $salt . "', '" . $_POST['phpstudentteacherradio'] . "') ";
     $conn->query($sqlInsertTestAccount);
 }
 
