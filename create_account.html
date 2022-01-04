@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <title>Create Account</title>
+</head>
+<body class="border-bg">
+<div class="float-container formdiv" class="border">
+  <h1 class="centertext"> Create Account: </h1>
+  <form onsubmit="return validation();" action="/php/create_account.php" id="form" method="post">
+    <div class="float-child">
+
+      <div class="form-group">
+        <label>Forename:</label>
+        <input type="text" class="form-control" name="frmForename" id="frmForename" value="">
+        <p class="forenameerror" id="forenameerror">* More than 2 characters <br> * Only letters</p>
+      </div><br>
+
+      <div class="form-group">
+        <label>Birthday:</label><br>
+        <input type="date" name="frmDateOfBirth" id="frmDateOfBirth" min="1900-01-01" max="" value="">
+      </div><br>
+
+      <div class="form-group">
+        <label>Age:</label><br>
+        <input type="number" min="12" max="150" name="frmAge" id="frmAge" value="12">
+        <p class="ageerror" id="ageerror">* Your age and birthday <br> don't add up</p>
+      </div><br>
+
+      <div class="form-group">
+        <label>Password:</label><br>
+        <input type="password" class="form-control" name="frmPwd" id="frmPwd" value="">
+        <p class="pwderror" id="pwderror">* More than 6 characters</p>
+      </div>
+    </div>
+    <div class="float-child vertical-line">
+      <div class="form-group">
+        <label>Surname:</label>
+        <input type="text" class="form-control" name="frmSurname" id="frmSurname">
+        <p class="surnameerror" id="surnameerror">* 2 or more characters <br> * Only letters</p>
+      </div><br>
+
+      <div class="form-group" id="frmGender">
+        <label>Gender:</label><br>
+        <input type="radio" name="frmGender" value="male"> Male<br>
+        <input type="radio" name="frmGender" value="female"> Female<br>
+        <input type="radio" name="frmGender" value="other"> Other<br>
+        <p class="gendererror" id="gendererror">* Select one</p>
+      </div>
+    
+      <div class="form-group">
+        <label>Course:</label><br>
+        <select name="frmCourse" id="frmCourse">
+          <option value="databases">Databases</option>
+          <option value="websites">Websites</option>
+          <option value="networks">Networks</option>
+        </select>
+        <p class="courseerror" id="courseerror">* Select one</p>
+      </div> <br><br>
+
+      <div class="form-group">
+        <a class="btn btn-default" onclick="clearform();">Clear form</a>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form> 
+</div>
+  <script type="text/javascript" src="js/create_account.js"></script>
+</body>
+</html>

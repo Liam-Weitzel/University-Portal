@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 01, 2021 at 08:35 PM
--- Server version: 10.3.31-MariaDB-0ubuntu0.20.04.1
+-- Generation Time: Jan 04, 2022 at 04:08 PM
+-- Server version: 10.3.32-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -31,20 +31,17 @@ USE `uni_portal`;
 --
 
 CREATE TABLE `accounts` (
-  `ID` int(11) NOT NULL,
-  `FirstName` varchar(255) NOT NULL,
-  `LastName` varchar(255) NOT NULL,
-  `Hash` varchar(255) NOT NULL,
-  `Salt` varchar(255) NOT NULL,
-  `Student0Teacher1` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `forename` varchar(255) NOT NULL,
+  `surname` varchar(255) NOT NULL,
+  `birthday` varchar(255) NOT NULL,
+  `age` int(11) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `course` varchar(255) NOT NULL,
+  `hash` varchar(255) NOT NULL,
+  `salt` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `accounts`
---
-
-INSERT INTO `accounts` (`ID`, `FirstName`, `LastName`, `Hash`, `Salt`, `Student0Teacher1`) VALUES
-(1, 'Liam', 'Weitzel', 'root+saltinhashform', 'salt', 0);
 
 --
 -- Indexes for dumped tables
@@ -54,7 +51,7 @@ INSERT INTO `accounts` (`ID`, `FirstName`, `LastName`, `Hash`, `Salt`, `Student0
 -- Indexes for table `accounts`
 --
 ALTER TABLE `accounts`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -64,7 +61,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
