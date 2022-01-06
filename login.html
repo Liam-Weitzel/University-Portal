@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.php">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <title>Login</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+</head>
+<body class="border-bg">
+<div class="float-container formdiv" class="border">
+    <h1 class="centertext-log"> Login: </h1>
+    <p class="pwdwrong pwdwrongtooltip">* Your password or name is wrong.</p>
+    <form onsubmit="" action="/php/login.php" id="form" method="post">
+        <div class="float-child">
+
+            <div class="form-group">
+                <label>Forename:</label>
+                <input type="text" class="form-control" name="frmForenameLog" id="frmForenameLog" value="">
+            </div><br>
+
+            <div class="form-group">
+                <label>Password:</label><br>
+                <input type="password" class="form-control" name="frmPwdLog" id="frmPwdLog" value="">
+            </div>
+        </div>
+        <div class="float-child vertical-line">
+            <div class="form-group">
+                <label>Surname:</label>
+                <input type="text" class="form-control" name="frmSurnameLog" id="frmSurnameLog">
+            </div><br><br>
+
+            <div class="form-group">
+                <a class="btn btn-default" onclick="clearform();">Clear form</a>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="js/login.js"></script>
+</body>
+</html>

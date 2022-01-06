@@ -1,3 +1,8 @@
+<?php header("Content-type: text/css"); ?>
+
+<?php
+session_start();
+?>
 
 html,body {
   height:100%;
@@ -24,6 +29,10 @@ body {
 
 .centertext {
     padding-left: 25%;
+}
+
+.centertext-log {
+    padding-left: 40%;
 }
 
 .formdiv {
@@ -74,4 +83,19 @@ body {
 .courseerror {
   display: none;
   color: red;
+}
+
+<?php
+if($_SESSION['loginfailed'] == False) {
+?>
+.pwdwrongtooltip {
+    display: none;
+}
+<?php
+}
+?>
+
+.pwdwrong {
+    color: red;
+    padding-left: 28%;
 }

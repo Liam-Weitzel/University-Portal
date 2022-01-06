@@ -15,9 +15,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForename'])) {
     $sqlInsertTestAccount = "INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `course`, `hash`, `salt`, `role`) VALUES (NULL, '" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmDateOfBirth'] . "', '" . $_POST['frmAge'] . "', '" . $_POST['frmGender'] . "', '" . $_POST['frmCourse'] . "', '" . (string)$passwordhashed . "', '" . (string)$salt . "', '" . "student" . "') ";
 
     if ($conn->query($sqlInsertTestAccount)) {
-      echo "Query executed.";
+      echo "Account created!";
+      header("Location: ../login.html");
+      die();
     } else{
-      echo "Query error.";
+      echo "Something went wrong. Please try again.";
+      header("Location: ../create_account.html");
+      die();
     }
 }
 /*
