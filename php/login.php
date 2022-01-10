@@ -44,6 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
         $_SESSION['logedin'] = False;
         //reset all other person specific variables here
         //also reset them on logout...
+        //unset($_SESSION['myVar']);
         header("Location: ../login.html");
         die();
     }
