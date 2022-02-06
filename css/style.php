@@ -29,7 +29,6 @@ body {
 
 .text-under-vertical-line {
     position: relative;
-    left: -17%;
 }
 
 .centertext {
