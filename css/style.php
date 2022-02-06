@@ -5,12 +5,12 @@ session_start();
 ?>
 
 html,body {
-  height:100%;
-  width:100%;
-  margin:0;
+    height:100%;
+    width:100%;
+    margin:0;
 }
 body {
-  display:flex;
+    display:flex;
 }
 
 .border-bg {
@@ -23,8 +23,13 @@ body {
 }
 
 .vertical-line {
-  border-left: 2px dotted black;
-  height: 100%;
+    border-left: 2px dotted black;
+    height: 100%;
+}
+
+.text-under-vertical-line {
+    position: relative;
+    left: -17%;
 }
 
 .centertext {
@@ -36,7 +41,7 @@ body {
 }
 
 .formdiv {
-  margin:auto;
+    margin:auto;
 }
 
 .float-container {
@@ -56,8 +61,8 @@ body {
 }
 
 .forenameerror {
-  display: none;
-  color: red;
+    display: none;
+    color: red;
 }
 
 .pwderror {
@@ -66,23 +71,23 @@ body {
 }
 
 .surnameerror {
-  display: none;
-  color: red;
+    display: none;
+    color: red;
 }
 
 .ageerror {
-  display: none;
-  color: red;
+    display: none;
+    color: red;
 }
 
 .gendererror {
-  display: none;
-  color: red;
+    display: none;
+    color: red;
 }
 
 .courseerror {
-  display: none;
-  color: red;
+    display: none;
+    color: red;
 }
 
 <?php
