@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,8 +32,17 @@
 </script>
 </head>
 <body>
-<p>First Name: </p><input value="testtest" id="inputstr"></input>
+<p>Your name is: </p>
+<p>
+<?php
+echo $_SESSION['firstname'];
+echo " ";
+echo $_SESSION['surname'];
+?>
+</p>
+<br>
+<p>First Name: </p><input value="testtest" id="inputstr">
 <button onclick="DemoAjax(document.getElementById('inputstr').value);">Get lastname</button>
-    <div id="demo"></div>
+<div id="demo"></div>
 </body>
 </html>
