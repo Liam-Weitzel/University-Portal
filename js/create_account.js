@@ -13,48 +13,55 @@ function validation() {
 
   var now = new Date();
   var userdateofbirth = new Date(document.getElementById("frmDateOfBirth").value);
-  if (document.getElementById("frmAge").value != (now.getFullYear()-userdateofbirth.getFullYear())) {
+  var agey = now.getFullYear() - userdateofbirth.getFullYear();
+  var agem = now.getMonth() - userdateofbirth.getMonth();
+
+  if (agem < 0 || (agem === 0 && now.getDate() < userdateofbirth.getDate())) {
+    agey--;
+  }
+
+  if (document.getElementById("frmAge").value != agey) {
     validationfailed.push("frmAge");
     validationpassed = false;
-  };
+  }
 
   var letters = /^[A-Za-z]+$/;
   if (!document.getElementById("frmForename").value.match(letters) || document.getElementById("frmForename").value.length <= 2) {
     validationfailed.push("frmForename");
     validationpassed = false;
-  };
+  }
   if (!document.getElementById("frmSurname").value.match(letters) || document.getElementById("frmSurname").value.length < 2) {
     validationfailed.push("frmSurname");
     validationpassed = false;
-  };
+  }
   if (document.getElementById("frmPwd").value.length < 6) {
     validationfailed.push("frmPwd");
     validationpassed = false;
-  };
+  }
 
   var genderradio = document.getElementsByName("frmGender");
   var gendercheckedarr = [];
   for(var i=0;i<genderradio.length;i++) {
     gendercheckedarr.push(genderradio[i].checked);
-  };
+  }
   if (!gendercheckedarr.includes(true)) {
     validationfailed.push("frmGender");
     validationpassed = false;
-  };
+  }
 
   if (document.getElementById("frmCourse").selectedIndex == -1) {
     validationfailed.push("frmCourse");
     validationpassed = false;
-  };
+  }
 
   if (validationpassed == true) {
 
   } else if (validationpassed == false) {
     showerrortooltips(validationfailed);  
-  };
-  
+  }
+
   return validationpassed;
-};
+}
 
 function showerrortooltips(validationceckarr) {
   if (validationceckarr.includes('frmForename')) {
@@ -98,7 +105,7 @@ function clearform() {
   var genderradio = document.getElementsByName("frmGender");
     for(var i=0;i<genderradio.length;i++) {
       genderradio[i].checked = false;
-    };
+    }
   //document.getElementById("frmDateReg").value = today;
   document.getElementById("frmDateOfBirth").setAttribute("max", today);
   document.getElementById("frmDateOfBirth").value = today;
@@ -110,5 +117,5 @@ function clearform() {
   document.getElementById('gendererror').style.display = 'none';
   document.getElementById('courseerror').style.display = 'none';
   document.getElementById('ageerror').style.display = 'none';
-  };
-};
+  }
+}

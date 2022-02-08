@@ -36,8 +36,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
         $_SESSION['loggedin'] = True;
         $_SESSION['firstname'] = $_POST['frmForenameLog'];
         $_SESSION['surname'] = $_POST['frmSurnameLog'];
-        //Store details about person and also maybe a key to disallow people to access the uni portal through a direct link
-        header("Location: ../ajax_demo/index.php");
+
+        header("Location: ../index.php");
         die();
     } else{
         echo "Login failed!";
@@ -47,9 +47,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
 
         unset($_SESSION['firstname']);
         unset($_SESSION['surname']);
-        //reset all other person specific variables here
-        //also reset them on logout...
-        //unset($_SESSION['myVar']);
+
         header("Location: ../login.html");
         die();
     }
