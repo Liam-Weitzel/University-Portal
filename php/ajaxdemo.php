@@ -15,7 +15,14 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['something'])) {
     $string = "";
 
     while ($row = mysqli_fetch_array($result)) {
-        echo $row['surname'];
+        echo "ID: " . $row['id'] . "<br>";
+        echo "Surname: " . $row['surname'] . "<br>";
+        echo "Birthday: " . $row['birthday'] . "<br>";
+        echo "Age: " . $row['age'] . "<br>";
+        echo "Gender: " . $row['gender'] . "<br>";
+        echo "Course: " . $row['course'] . "<br>";
+        echo "Hash: " . $row['hash'] . "<br>";
+        echo "Salt: " . $row['salt'] . "<br>";
     }
 }
 $conn->close();

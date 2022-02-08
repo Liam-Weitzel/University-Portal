@@ -103,3 +103,29 @@ if($_SESSION['loginfailed'] == False) {
     color: red;
     padding-left: 28%;
 }
+
+.sectiondiv {
+    border: solid 2px white;
+    background-color: #e4e4f7;
+    box-shadow: 5px 5px #888888;
+    margin:10px;
+    margin-top:70px;
+
+    padding: 10px;
+    padding-top: 10px;
+    /*margin:auto;*/
+}
+
+.navbardiv {
+    border: solid 2px white;
+    background-color: #e4e4f7;
+    box-shadow: 5px 5px #888888;
+    margin:10px;
+    position: absolute;
+
+    padding: 10px;
+    padding-top: 10px;
+    width: 98.6%;
+    height: 45px;
+    /*margin:auto;*/
+}
