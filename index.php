@@ -1,8 +1,11 @@
 <?php
 session_start();
-?>
+$_SESSION['activepage'] = 'index';
 
-<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if($_SESSION['loginfailed'] == False && $_SESSION['loggedin'] == True) {
 } else {
     header("Location: ../login.html");
@@ -22,7 +25,7 @@ if($_SESSION['loginfailed'] == False && $_SESSION['loggedin'] == True) {
 </head>
 <body>
 
-<?php include("embeds/navbar.html") ?>
+<?php include("embeds/navbar.php") ?>
 
 <p>Your name is: </p>
 <p>
