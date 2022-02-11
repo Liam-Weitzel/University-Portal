@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 04, 2022 at 04:08 PM
+-- Generation Time: Feb 11, 2022 at 09:16 AM
 -- Server version: 10.3.32-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -44,6 +44,14 @@ CREATE TABLE `accounts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `course`, `hash`, `salt`, `role`) VALUES
+(24, 'Liam', 'Weitzel', '2002-06-23', 19, 'male', 'databases', '$2y$10$K/jjJkuai16O9Fm50SBj2OCvt8tBpVxJhu0aSuEpgf3lX46jlYw/K', 'JI9gk-#|YYA', 'student'),
+(25, 'Stephanie', 'Rosenkranz', '1965-03-17', 56, 'female', 'websites', '$2y$10$GGdGH2vwWlT6WMUce73cdufW518iVCEx7eIehGn4flsX1wEoE5UjK', 'Vb0j?,9s0w$', 'student');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -61,7 +69,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

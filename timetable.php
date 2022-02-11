@@ -27,7 +27,7 @@ if($_SESSION['loginfailed'] == False && $_SESSION['loggedin'] == True) {
 
 <?php include("embeds/navbar.php") ?>
 
-<div class="timetable">
+<div class="timetable-full">
   <div class="week-names">
     <div>monday</div>
     <div>tuesday</div>
@@ -142,6 +142,26 @@ if($_SESSION['loginfailed'] == False && $_SESSION['loggedin'] == True) {
     <div class="weekend"></div>
   </div>
 </div>
+
+<div class="timetable-small">
+<div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+        <div id="i1" class="item"><p>Monday</p></div>
+        <div id="i2" class="item"><p>Tuesday</p></div>
+        <div id="i3" class="item"><p>Wednesday</p></div>
+        <div id="i4" class="item"><p>Thursday</p></div>
+        <div id="i5" class="item"><p>Friday</p></div>
+        <div id="i6" class="item"><p>Saturday</p></div>
+        <div id="i0" class="item"><p>Sunday</p></div>
+    </div>
+    <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+</div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/timetable.js"></script>
 
 </body>
 </html>
