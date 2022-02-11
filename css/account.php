@@ -8,10 +8,13 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ?>
 
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 html,body {
     height:100%;
     width:100%;
     margin:0;
+    font-family: 'Roboto', sans-serif;
 }
 body {
     display:flex;
@@ -48,7 +51,8 @@ body {
 }
 
 .float-container {
-    border: solid 2px white;
+    /*border: solid 2px white;*/
+    border-radius:20px;
     padding: 20px;
     padding-top: 0px;
     background-color: #e4e4f7;

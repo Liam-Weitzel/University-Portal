@@ -16,7 +16,7 @@ i {
     color: #fff;
 }
 .navbar-mainbg{
-    background-color: #5161ce;
+    background-color: #79aafc;
     padding: 0px;
 }
 #navbarSupportedContent{
@@ -35,7 +35,7 @@ i {
     float: left;
 }
 #navbarSupportedContent ul li a{
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,255);
     text-decoration: none;
     font-size: 15px;
     display: block;
@@ -45,7 +45,7 @@ i {
     position: relative;
 }
 #navbarSupportedContent>ul>li.active>a{
-    color: #5161ce;
+    color: #79aafc;
     background-color: transparent;
     transition: all 0.7s;
 }
@@ -69,8 +69,8 @@ i {
     display:inline-block;
     position:absolute;
     height: 100%;
-    top: 0px;
-    left: 0px;
+    top: 0vh;
+    left: 100vw;
     transition-duration:0.6s;
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     background-color: #fff;
@@ -99,7 +99,7 @@ i {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #5161ce;
+    background-color: #79aafc;
 }
 .hori-selector .right:before{
     bottom: 0;
