@@ -55,7 +55,6 @@ i {
     right: 20px;
     top: 10px;
     font-size: 14px;
-    font-family: "Font Awesome 5 Free";
     display: inline-block;
     padding-right: 3px;
     vertical-align: middle;
@@ -111,7 +110,7 @@ i {
 }
 
 
-@media(min-width: 992px){
+@media(min-width: 1150px){
     .navbar-expand-custom {
         -ms-flex-flow: row nowrap;
         flex-flow: row nowrap;
@@ -134,7 +133,7 @@ i {
 }
 
 
-@media (max-width: 991px){
+@media (max-width: 1150px){
     #navbarSupportedContent ul li a{
         padding: 12px 30px;
     }

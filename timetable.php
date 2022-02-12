@@ -143,19 +143,271 @@ if($_SESSION['loginfailed'] == False && $_SESSION['loggedin'] == True) {
   </div>
 </div>
 
-<div class="timetable-small">
-<div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+<div class="timetable-small-hide">
+<div id="carousel" class="carousel slide carousel-fade" data-interval="false">
     <div class="carousel-inner">
-        <div id="i1" class="item"><p>Monday</p></div>
-        <div id="i2" class="item"><p>Tuesday</p></div>
-        <div id="i3" class="item"><p>Wednesday</p></div>
-        <div id="i4" class="item"><p>Thursday</p></div>
-        <div id="i5" class="item"><p>Friday</p></div>
-        <div id="i6" class="item"><p>Saturday</p></div>
-        <div id="i0" class="item"><p>Sunday</p></div>
+        <div id="i1" class="item">
+            <div class="timetable-small">
+              <div class="week-names">
+                  <div>monday</div>
+              </div>
+              <div class="time-interval">
+                  <div>8:00 - 9:00</div>
+                  <div>9:00 - 10:00</div>
+                  <div>10:00 - 11:00</div>
+                  <div>11:00 - 12:00</div>
+                  <div>12:00 - 13:00</div>
+                  <div>13:00 - 14:00</div>
+                  <div>14:00 - 15:00</div>
+                  <div>15:00 - 16:00</div>
+                  <div>16:00 - 17:00</div>
+                  <div>17:00 - 18:00</div>
+                </div>
+                <div class="content">
+                    <div></div>
+                    <div>
+                        <div class="accent-green-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div class="accent-purple-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div class="accent-orange-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div id="i2" class="item">
+            <div class="timetable-small">
+              <div class="week-names">
+                  <div>tuesday</div>
+              </div>
+              <div class="time-interval">
+                  <div>8:00 - 9:00</div>
+                  <div>9:00 - 10:00</div>
+                  <div>10:00 - 11:00</div>
+                  <div>11:00 - 12:00</div>
+                  <div>12:00 - 13:00</div>
+                  <div>13:00 - 14:00</div>
+                  <div>14:00 - 15:00</div>
+                  <div>15:00 - 16:00</div>
+                  <div>16:00 - 17:00</div>
+                  <div>17:00 - 18:00</div>
+                </div>
+                <div class="content">
+                    <div>
+                        <div class="accent-green-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div class="accent-pink-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div>
+                        <div class="accent-orange-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div id="i3" class="item">
+            <div class="timetable-small">
+              <div class="week-names">
+                  <div>wednesday</div>
+              </div>
+              <div class="time-interval">
+                  <div>8:00 - 9:00</div>
+                  <div>9:00 - 10:00</div>
+                  <div>10:00 - 11:00</div>
+                  <div>11:00 - 12:00</div>
+                  <div>12:00 - 13:00</div>
+                  <div>13:00 - 14:00</div>
+                  <div>14:00 - 15:00</div>
+                  <div>15:00 - 16:00</div>
+                  <div>16:00 - 17:00</div>
+                  <div>17:00 - 18:00</div>
+                </div>
+                <div class="content">
+                    <div></div>
+                    <div>
+                        <div class="accent-green-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div class="accent-green-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div class="accent-green-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div id="i4" class="item">
+            <div class="timetable-small">
+              <div class="week-names">
+                  <div>thursday</div>
+              </div>
+              <div class="time-interval">
+                  <div>8:00 - 9:00</div>
+                  <div>9:00 - 10:00</div>
+                  <div>10:00 - 11:00</div>
+                  <div>11:00 - 12:00</div>
+                  <div>12:00 - 13:00</div>
+                  <div>13:00 - 14:00</div>
+                  <div>14:00 - 15:00</div>
+                  <div>15:00 - 16:00</div>
+                  <div>16:00 - 17:00</div>
+                  <div>17:00 - 18:00</div>
+                </div>
+                <div class="content">
+                    <div></div>
+                    <div>
+                        <div class="accent-blue-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div class="accent-cyan-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div class="accent-green-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div id="i5" class="item">
+            <div class="timetable-small">
+              <div class="week-names">
+                  <div>friday</div>
+              </div>
+              <div class="time-interval">
+                  <div>8:00 - 9:00</div>
+                  <div>9:00 - 10:00</div>
+                  <div>10:00 - 11:00</div>
+                  <div>11:00 - 12:00</div>
+                  <div>12:00 - 13:00</div>
+                  <div>13:00 - 14:00</div>
+                  <div>14:00 - 15:00</div>
+                  <div>15:00 - 16:00</div>
+                  <div>16:00 - 17:00</div>
+                  <div>17:00 - 18:00</div>
+                </div>
+                <div class="content">
+                    <div></div>
+                    <div>
+                        <div class="accent-orange-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div class="accent-blue-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div>
+                        <div class="accent-cyan-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div id="i6" class="item">
+            <div class="timetable-small">
+              <div class="week-names">
+                  <div>saturday</div>
+              </div>
+              <div class="time-interval">
+                  <div>8:00 - 9:00</div>
+                  <div>9:00 - 10:00</div>
+                  <div>10:00 - 11:00</div>
+                  <div>11:00 - 12:00</div>
+                  <div>12:00 - 13:00</div>
+                  <div>13:00 - 14:00</div>
+                  <div>14:00 - 15:00</div>
+                  <div>15:00 - 16:00</div>
+                  <div>16:00 - 17:00</div>
+                  <div>17:00 - 18:00</div>
+                </div>
+                <div class="content">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div class="accent-purple-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div>
+                        <div class="accent-orange-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div class="accent-green-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div id="i0" class="item">
+            <div class="timetable-small">
+              <div class="week-names">
+                  <div>sunday</div>
+              </div>
+              <div class="time-interval">
+                  <div>8:00 - 9:00</div>
+                  <div>9:00 - 10:00</div>
+                  <div>10:00 - 11:00</div>
+                  <div>11:00 - 12:00</div>
+                  <div>12:00 - 13:00</div>
+                  <div>13:00 - 14:00</div>
+                  <div>14:00 - 15:00</div>
+                  <div>15:00 - 16:00</div>
+                  <div>16:00 - 17:00</div>
+                  <div>17:00 - 18:00</div>
+                </div>
+                <div class="content">
+                    <div></div>
+                    <div>
+                        <div class="accent-orange-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div>
+                        <div class="accent-pink-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div>
+                        <div class="accent-cyan-gradient"><p style="padding-left: 5px;">Lecture<br>Computer graphics<br>Location: LTCC <br>Mark Greenwood </p></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
+    <a class="carousel-control carousel-control-left" href="#carousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control carousel-control-right" href="#carousel" data-slide="next">&rsaquo;</a>
 </div>
 </div>
 

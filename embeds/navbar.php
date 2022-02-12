@@ -18,8 +18,8 @@ error_reporting(E_ALL);
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-            <li class="nav-item <?php echo ($_SESSION['activepage'] == 'index') ? 'active' : ''; ?>">
-                <a class="nav-link" href="../index.php"><i class="fas fa-tachometer-alt"></i>Index</a>
+            <li class="nav-item <?php echo ($_SESSION['activepage'] == 'dashboard') ? 'active' : ''; ?>">
+                <a class="nav-link" href="../index.php"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
             <li class="nav-item <?php echo ($_SESSION['activepage'] == 'contacts') ? 'active' : ''; ?>">
                 <a class="nav-link" href="#"><i class="far fa-address-book"></i>Contacts</a>
