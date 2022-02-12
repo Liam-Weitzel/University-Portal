@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 11, 2022 at 09:16 AM
+-- Generation Time: Feb 12, 2022 at 06:12 PM
 -- Server version: 10.3.32-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -51,6 +51,32 @@ INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`
 (24, 'Liam', 'Weitzel', '2002-06-23', 19, 'male', 'databases', '$2y$10$K/jjJkuai16O9Fm50SBj2OCvt8tBpVxJhu0aSuEpgf3lX46jlYw/K', 'JI9gk-#|YYA', 'student'),
 (25, 'Stephanie', 'Rosenkranz', '1965-03-17', 56, 'female', 'websites', '$2y$10$GGdGH2vwWlT6WMUce73cdufW518iVCEx7eIehGn4flsX1wEoE5UjK', 'Vb0j?,9s0w$', 'student');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timetable`
+--
+
+CREATE TABLE `timetable` (
+  `id` int(11) NOT NULL,
+  `day` int(11) NOT NULL,
+  `time` int(11) NOT NULL,
+  `line1` varchar(255) NOT NULL,
+  `line2` varchar(255) NOT NULL,
+  `line3` varchar(255) NOT NULL,
+  `line4` varchar(255) NOT NULL,
+  `course` varchar(255) NOT NULL,
+  `color` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `timetable`
+--
+
+INSERT INTO `timetable` (`id`, `day`, `time`, `line1`, `line2`, `line3`, `line4`, `course`, `color`) VALUES
+(1, 0, 0, 'Lecture', 'Computer graphics', 'Location: LTCC', 'Mark Greenwood', 'databases', 0),
+(2, 0, 1, 'Seminar', 'Computer graphics', 'Location: FML301', 'Mark Greenwood', 'databases', 0);
+
 --
 -- Indexes for dumped tables
 --
@@ -62,6 +88,12 @@ ALTER TABLE `accounts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `timetable`
+--
+ALTER TABLE `timetable`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -70,6 +102,12 @@ ALTER TABLE `accounts`
 --
 ALTER TABLE `accounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `timetable`
+--
+ALTER TABLE `timetable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -23,7 +23,7 @@ if($_SESSION['loginfailed'] == False && $_SESSION['loggedin'] == True) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
 </head>
-<body>
+<body onload="getTimetableDataAJAX();">
 
 <?php include("embeds/navbar.php") ?>
 
