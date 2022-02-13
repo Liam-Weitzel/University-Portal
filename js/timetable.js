@@ -39,7 +39,24 @@ function getTimetableDataAJAX() {
         if (this.readyState == 4 && this.status == 200) {
             // Typical action to be performed when the document is ready:
             //document.getElementById("demo").innerHTML = xhttp.responseText;
-            console.log(xhttp.responseText);
+            response = xhttp.responseText;
+            response = response.slice(0, -1);
+            var responsearr = response.split(',');
+            console.log(responsearr);
+
+            var numberofevents = parseInt(responsearr[0]);
+            responsearr.shift();
+            var eventsarr = [];
+
+            for(var i = 0; i < numberofevents; i++) {
+                var tempeventsarr = [];
+                for(var j = 0; j < responsearr.length; j = j + numberofevents) {
+                    tempeventsarr.push(responsearr[j+i]);
+                }
+                eventsarr.push(tempeventsarr);
+            }
+
+            console.log(eventsarr);
         }
     };
 

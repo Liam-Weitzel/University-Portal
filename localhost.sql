@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 12, 2022 at 06:12 PM
+-- Generation Time: Feb 13, 2022 at 05:12 PM
 -- Server version: 10.3.32-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -75,7 +75,10 @@ CREATE TABLE `timetable` (
 
 INSERT INTO `timetable` (`id`, `day`, `time`, `line1`, `line2`, `line3`, `line4`, `course`, `color`) VALUES
 (1, 0, 0, 'Lecture', 'Computer graphics', 'Location: LTCC', 'Mark Greenwood', 'databases', 0),
-(2, 0, 1, 'Seminar', 'Computer graphics', 'Location: FML301', 'Mark Greenwood', 'databases', 0);
+(2, 0, 1, 'Seminar', 'Computer graphics', 'Location: FML301', 'Mark Greenwood', 'databases', 0),
+(3, 0, 3, 'Lecture', 'Web development', 'Location: LTCC', 'Neil Buckley', 'databases', 1),
+(4, 0, 4, 'Seminar', 'Web development', 'Location: FML401', 'Neil Buckley', 'databases', 1),
+(5, 0, 6, 'Lecture', 'OOSD', 'Location: EDEN1', 'Kapil', 'databases', 2);
 
 --
 -- Indexes for dumped tables
@@ -107,7 +110,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `timetable`
 --
 ALTER TABLE `timetable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
