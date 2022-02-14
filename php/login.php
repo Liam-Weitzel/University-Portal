@@ -29,11 +29,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
     $passwordsalted = $_POST['frmPwdLog'] . $saltstring;
     $passwordverified = password_verify($passwordsalted, $hashstring);
 
-    if ($passwordverified == true) {
+    $sqlgetrole = "SELECT `role` FROM `accounts` WHERE `forename`=\"" . $_POST['frmForenameLog'] . "\" AND `surname`=\"" . $_POST['frmSurnameLog'] . "\" LIMIT 1";
+    $role = $conn->query($sqlgetrole);
+    $rolestring = "";
+
+    while ($row = mysqli_fetch_array($role)) {
+        $rolestring .= $row['role'];
+    }
+
+    if ($passwordverified == true && $rolestring != 'un-authorized' ) {
         echo "Logged in!";
 
         $_SESSION['loginfailed'] = False;
         $_SESSION['loggedin'] = True;
+        $_SESSION['role'] = $rolestring;
         $_SESSION['firstname'] = $_POST['frmForenameLog'];
         $_SESSION['surname'] = $_POST['frmSurnameLog'];
 
@@ -47,6 +56,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
 
         unset($_SESSION['firstname']);
         unset($_SESSION['surname']);
+        unset($_SESSION['role']);
 
         header("Location: ../login.html");
         die();

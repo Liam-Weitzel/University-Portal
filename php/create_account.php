@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForename'])) {
     $passwordsalted = $_POST['frmPwd'] . $salt;
     $passwordhashed = password_hash($passwordsalted, PASSWORD_DEFAULT);
 
-    $sqlInsertTestAccount = "INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `course`, `hash`, `salt`, `role`) VALUES (NULL, '" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmDateOfBirth'] . "', '" . $_POST['frmAge'] . "', '" . $_POST['frmGender'] . "', '" . $_POST['frmCourse'] . "', '" . (string)$passwordhashed . "', '" . (string)$salt . "', '" . "student" . "') ";
+    $sqlInsertTestAccount = "INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `course`, `hash`, `salt`, `role`) VALUES (NULL, '" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmDateOfBirth'] . "', '" . $_POST['frmAge'] . "', '" . $_POST['frmGender'] . "', '" . $_POST['frmCourse'] . "', '" . (string)$passwordhashed . "', '" . (string)$salt . "', '" . "un-authorized" . "') ";
 
     if ($conn->query($sqlInsertTestAccount)) {
       echo "Account created!";

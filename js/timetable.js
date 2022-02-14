@@ -92,7 +92,6 @@ function getTimetableDataAJAX() {
                                 document.getElementById('p0-0l2').innerHTML = eventsarr[i][3];
                                 document.getElementById('p0-0l3').innerHTML = eventsarr[i][4];
                                 document.getElementById('p0-0l4').innerHTML = eventsarr[i][5];
-                                //monday at 8
                                 break;
                             case 1:
                                 if (parseInt(eventsarr[i][6]) == 6) {
