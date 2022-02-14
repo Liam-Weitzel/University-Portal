@@ -85,6 +85,17 @@ body {
     box-shadow: 0 20px 30px 0 rgba(192, 142, 238, 0.3);
     transform: scale(1.05);
 }
+.timetable-full .accent-yellow-gradient {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #eed38e, #e4ee8e);
+    transition: 0.2s ease box-shadow, 0.2s ease transform;
+}
+.timetable-full .accent-yellow-gradient:hover {
+    box-shadow: 0 20px 30px 0 rgba(241, 234, 76, 0.8);
+    transform: scale(1.05);
+}
 .timetable-full .weekend {
     background: #fbfbfc;
     color: #87a1ad;
@@ -286,6 +297,17 @@ timetable-small-hide,
 }
 .timetable-small .accent-purple-gradient:hover {
     box-shadow: 0 20px 30px 0 rgba(192, 142, 238, 0.3);
+    transform: scale(1.05);
+}
+.timetable-small .accent-yellow-gradient {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #eed38e, #e4ee8e);
+    transition: 0.2s ease box-shadow, 0.2s ease transform;
+}
+.timetable-small .accent-yellow-gradient:hover {
+    box-shadow: 0 20px 30px 0 rgba(241, 234, 76, 0.8);
     transform: scale(1.05);
 }
 .timetable-small .weekend {
