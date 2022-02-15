@@ -49,7 +49,7 @@ function validation() {
     validationpassed = false;
   }
 
-  if (document.getElementById("frmCourse").selectedIndex == -1) {
+  if (document.getElementById("frmCourse1").checked === false && document.getElementById("frmCourse2").checked === false && document.getElementById("frmCourse3").checked === false) {
     validationfailed.push("frmCourse");
     validationpassed = false;
   }
@@ -112,6 +112,7 @@ function clearform() {
   document.getElementById("frmAge").value = '12';
   document.getElementById("frmCourse").value = '';
   document.getElementById("frmPwd").value = '';
+  document.getElementById('pwderror').style.display = 'none';
   document.getElementById('forenameerror').style.display = 'none';
   document.getElementById('surnameerror').style.display = 'none';
   document.getElementById('gendererror').style.display = 'none';

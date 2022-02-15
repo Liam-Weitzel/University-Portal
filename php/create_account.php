@@ -13,18 +13,24 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForename'])) {
     $passwordhashed = password_hash($passwordsalted, PASSWORD_DEFAULT);
 
     $sqlInsertAccount = "INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `hash`, `salt`, `role`) VALUES (NULL, '" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmDateOfBirth'] . "', '" . $_POST['frmAge'] . "', '" . $_POST['frmGender'] . "', '" . (string)$passwordhashed . "', '" . (string)$salt . "', '" . "un-authorized" . "') ";
-    $sqlInsertCourses = "INSERT INTO `courses`(`id`, `forename`, `surname`, `course`) VALUES (NULL,'" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmCourse'] . "')";
 
-    if ($conn->query($sqlInsertAccount)) {
-        if ($conn->query($sqlInsertCourses)) {
-            echo "Account created!";
-            header("Location: ../login.html");
-            die();
-        } else {
-            echo "Something went wrong. Please try again.";
-            header("Location: ../create_account.html");
-            die();
-        }
+    $sqlInsertCourses1;
+    $sqlInsertCourses2;
+    $sqlInsertCourses3;
+    if (isset($_POST['frmCourse1'])) {
+        $sqlInsertCourses1 = "INSERT INTO `courses`(`id`, `forename`, `surname`, `course`) VALUES (NULL,'" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmCourse1'] . "')";
+    }
+    if (isset($_POST['frmCourse2'])) {
+        $sqlInsertCourses2 = "INSERT INTO `courses`(`id`, `forename`, `surname`, `course`) VALUES (NULL,'" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmCourse2'] . "')";
+    }
+    if (isset($_POST['frmCourse3'])) {
+        $sqlInsertCourses3 = "INSERT INTO `courses`(`id`, `forename`, `surname`, `course`) VALUES (NULL,'" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmCourse3'] . "')";
+    }
+
+    if ($conn->query($sqlInsertAccount) and $conn->query($sqlInsertCourses1) and $conn->query($sqlInsertCourses2) and $conn->query($sqlInsertCourses3)) {
+        echo "Account created!";
+        header("Location: ../login.html");
+        die();
     } else{
         echo "Something went wrong. Please try again.";
         header("Location: ../create_account.html");
