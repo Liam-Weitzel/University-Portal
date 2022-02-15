@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 14, 2022 at 12:46 PM
+-- Generation Time: Feb 15, 2022 at 11:37 AM
 -- Server version: 10.3.32-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -37,7 +37,6 @@ CREATE TABLE `accounts` (
   `birthday` varchar(255) NOT NULL,
   `age` int(11) NOT NULL,
   `gender` varchar(255) NOT NULL,
-  `course` varchar(255) NOT NULL,
   `hash` varchar(255) NOT NULL,
   `salt` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL
@@ -47,9 +46,35 @@ CREATE TABLE `accounts` (
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `course`, `hash`, `salt`, `role`) VALUES
-(24, 'Liam', 'Weitzel', '2002-06-23', 19, 'male', 'databases', '$2y$10$K/jjJkuai16O9Fm50SBj2OCvt8tBpVxJhu0aSuEpgf3lX46jlYw/K', 'JI9gk-#|YYA', 'student'),
-(25, 'Stephanie', 'Rosenkranz', '1965-03-17', 56, 'female', 'websites', '$2y$10$GGdGH2vwWlT6WMUce73cdufW518iVCEx7eIehGn4flsX1wEoE5UjK', 'Vb0j?,9s0w$', 'student');
+INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `hash`, `salt`, `role`) VALUES
+(24, 'Liam', 'Weitzel', '2002-06-23', 19, 'male', '$2y$10$K/jjJkuai16O9Fm50SBj2OCvt8tBpVxJhu0aSuEpgf3lX46jlYw/K', 'JI9gk-#|YYA', 'student'),
+(25, 'Stephanie', 'Rosenkranz', '1965-03-17', 56, 'female', '$2y$10$GGdGH2vwWlT6WMUce73cdufW518iVCEx7eIehGn4flsX1wEoE5UjK', 'Vb0j?,9s0w$', 'student'),
+(28, 'testtestt', 'testtestt', '2002-06-23', 19, 'male', '$2y$10$FLc9jD4aWvOnAyQoOKtgFeXgLmkyyHKcDqlQbAz3Jr3xfmQTwfR/a', 'djx|Tb}W}#', 'student'),
+(29, 'Sam', 'Collins', '1999-08-08', 22, 'male', '$2y$10$qS2ooKgl9EzzhNckW88jnONcTVbaQ6Di4.S1KZg1jB3E7aBINx2vy', 'u;GoZJ6h/M)', 'student');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `id` int(11) NOT NULL,
+  `forename` varchar(255) NOT NULL,
+  `surname` varchar(255) NOT NULL,
+  `course` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `forename`, `surname`, `course`) VALUES
+(1, 'testtestt', 'testtestt', 'databases'),
+(2, 'Liam', 'Weitzel', 'databases'),
+(3, 'Stephanie', 'Rosenkranz', 'databases'),
+(4, 'Liam', 'Weitzel', 'networks'),
+(5, 'Sam', 'Collins', 'websites');
 
 -- --------------------------------------------------------
 
@@ -78,7 +103,8 @@ INSERT INTO `timetable` (`id`, `day`, `time`, `line1`, `line2`, `line3`, `line4`
 (2, 0, 1, 'Seminar', 'Computer graphics', 'Location: FML301', 'Mark Greenwood', 'databases', 0),
 (3, 0, 3, 'Lecture', 'Web development', 'Location: LTCC', 'Neil Buckley', 'databases', 1),
 (4, 0, 4, 'Seminar', 'Web development', 'Location: FML401', 'Neil Buckley', 'databases', 1),
-(5, 0, 6, 'Lecture', 'OOSD', 'Location: EDEN1', 'Kapil', 'databases', 2);
+(5, 0, 6, 'Lecture', 'OOSD', 'Location: EDEN1', 'Kapil', 'databases', 2),
+(8, 1, 1, 'Lecture', 'Datalink Layer', 'Location: FML411', 'Mark Greenwood', 'networks', 5);
 
 --
 -- Indexes for dumped tables
@@ -88,6 +114,12 @@ INSERT INTO `timetable` (`id`, `day`, `time`, `line1`, `line2`, `line3`, `line4`
 -- Indexes for table `accounts`
 --
 ALTER TABLE `accounts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -104,13 +136,19 @@ ALTER TABLE `timetable`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `courses`
+--
+ALTER TABLE `courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `timetable`
 --
 ALTER TABLE `timetable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

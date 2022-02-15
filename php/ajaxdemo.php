@@ -20,7 +20,6 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['something'])) {
         echo "Birthday: " . $row['birthday'] . "<br>";
         echo "Age: " . $row['age'] . "<br>";
         echo "Gender: " . $row['gender'] . "<br>";
-        echo "Course: " . $row['course'] . "<br>";
         echo "Hash: " . $row['hash'] . "<br>";
         echo "Salt: " . $row['salt'] . "<br>";
     }

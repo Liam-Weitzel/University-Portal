@@ -12,15 +12,22 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForename'])) {
     $passwordsalted = $_POST['frmPwd'] . $salt;
     $passwordhashed = password_hash($passwordsalted, PASSWORD_DEFAULT);
 
-    $sqlInsertTestAccount = "INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `course`, `hash`, `salt`, `role`) VALUES (NULL, '" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmDateOfBirth'] . "', '" . $_POST['frmAge'] . "', '" . $_POST['frmGender'] . "', '" . $_POST['frmCourse'] . "', '" . (string)$passwordhashed . "', '" . (string)$salt . "', '" . "un-authorized" . "') ";
+    $sqlInsertAccount = "INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `hash`, `salt`, `role`) VALUES (NULL, '" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmDateOfBirth'] . "', '" . $_POST['frmAge'] . "', '" . $_POST['frmGender'] . "', '" . (string)$passwordhashed . "', '" . (string)$salt . "', '" . "un-authorized" . "') ";
+    $sqlInsertCourses = "INSERT INTO `courses`(`id`, `forename`, `surname`, `course`) VALUES (NULL,'" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmCourse'] . "')";
 
-    if ($conn->query($sqlInsertTestAccount)) {
-      echo "Account created!";
-      header("Location: ../login.html");
-      die();
+    if ($conn->query($sqlInsertAccount)) {
+        if ($conn->query($sqlInsertCourses)) {
+            echo "Account created!";
+            header("Location: ../login.html");
+            die();
+        } else {
+            echo "Something went wrong. Please try again.";
+            header("Location: ../create_account.html");
+            die();
+        }
     } else{
-      echo "Something went wrong. Please try again.";
-      header("Location: ../create_account.html");
+        echo "Something went wrong. Please try again.";
+        header("Location: ../create_account.html");
       die();
     }
 }
