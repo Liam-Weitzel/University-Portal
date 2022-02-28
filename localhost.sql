@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 15, 2022 at 11:37 AM
+-- Generation Time: Feb 28, 2022 at 01:17 PM
 -- Server version: 10.3.32-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -62,19 +62,20 @@ CREATE TABLE `courses` (
   `id` int(11) NOT NULL,
   `forename` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
-  `course` varchar(255) NOT NULL
+  `course` varchar(255) NOT NULL,
+  `authorized` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`id`, `forename`, `surname`, `course`) VALUES
-(1, 'testtestt', 'testtestt', 'databases'),
-(2, 'Liam', 'Weitzel', 'databases'),
-(3, 'Stephanie', 'Rosenkranz', 'databases'),
-(4, 'Liam', 'Weitzel', 'networks'),
-(5, 'Sam', 'Collins', 'websites');
+INSERT INTO `courses` (`id`, `forename`, `surname`, `course`, `authorized`) VALUES
+(1, 'testtestt', 'testtestt', 'databases', 0),
+(2, 'Liam', 'Weitzel', 'databases', 1),
+(3, 'Stephanie', 'Rosenkranz', 'databases', 0),
+(4, 'Liam', 'Weitzel', 'networks', 0),
+(5, 'Sam', 'Collins', 'websites', 0);
 
 -- --------------------------------------------------------
 
@@ -136,13 +137,13 @@ ALTER TABLE `timetable`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `timetable`

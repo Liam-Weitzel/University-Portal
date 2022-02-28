@@ -10,7 +10,7 @@ include('../php/dbconnect.php');
 
 if($_SERVER['REQUEST_METHOD'] == "GET") {
 
-    $getcourse = "SELECT `course` FROM `courses` WHERE `forename`=\"" . $_SESSION['firstname'] . "\" AND `surname`=\"" . $_SESSION['surname'] . "\"";
+    $getcourse = "SELECT `course` FROM `courses` WHERE `forename`=\"" . $_SESSION['firstname'] . "\" AND `surname`=\"" . $_SESSION['surname'] . "\" AND `authorized`=\"" . '1' . "\"";
     $getcourseresult = $conn->query($getcourse);
     $usercourse = "";
 
