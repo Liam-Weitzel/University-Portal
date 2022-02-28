@@ -22,6 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['something'])) {
         echo "Gender: " . $row['gender'] . "<br>";
         echo "Hash: " . $row['hash'] . "<br>";
         echo "Salt: " . $row['salt'] . "<br>";
+        echo "Role: " . $row['role'] . "<br>";
     }
 }
 $conn->close();
