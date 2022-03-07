@@ -10,7 +10,7 @@ include('dbconnect.php');
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
 
-    $sqlgetsalt = "SELECT `salt` FROM `accounts` WHERE `forename`=\"" . $_POST['frmForenameLog'] . "\" AND `surname`=\"" . $_POST['frmSurnameLog'] . "\" LIMIT 1";
+    $sqlgetsalt = "SELECT `salt` FROM `accounts` WHERE `id`=\"" . $_POST['frmIDLog'] . "\" LIMIT 1";
     $salt = $conn->query($sqlgetsalt);
     $saltstring = "";
 
@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
         $saltstring .= $row['salt'];
     }
 
-    $sqlgethash = "SELECT `hash` FROM `accounts` WHERE `forename`=\"" . $_POST['frmForenameLog'] . "\" AND `surname`=\"" . $_POST['frmSurnameLog'] . "\" LIMIT 1";
+    $sqlgethash = "SELECT `hash` FROM `accounts` WHERE `id`=\"" . $_POST['frmIDLog'] . "\" LIMIT 1";
     $hash = $conn->query($sqlgethash);
     $hashstring = "";
 
@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
     $passwordsalted = $_POST['frmPwdLog'] . $saltstring;
     $passwordverified = password_verify($passwordsalted, $hashstring);
 
-    $sqlgetrole = "SELECT `role` FROM `accounts` WHERE `forename`=\"" . $_POST['frmForenameLog'] . "\" AND `surname`=\"" . $_POST['frmSurnameLog'] . "\" LIMIT 1";
+    $sqlgetrole = "SELECT `role` FROM `accounts` WHERE `id`=\"" . $_POST['frmIDLog'] . "\" LIMIT 1";
     $role = $conn->query($sqlgetrole);
     $rolestring = "";
 
@@ -37,7 +37,23 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
         $rolestring .= $row['role'];
     }
 
-    if ($passwordverified == true && $rolestring != 'un-authorized' ) {
+    $sqlgetforename = "SELECT `forename` FROM `accounts` WHERE `id`=\"" . $_POST['frmIDLog'] . "\" LIMIT 1";
+    $forename = $conn->query($sqlgetforename);
+    $forenamestring = "";
+
+    while ($row = mysqli_fetch_array($forename)) {
+        $forenamestring .= $row['forename'];
+    }
+
+    $sqlgetsurname = "SELECT `surname` FROM `accounts` WHERE `id`=\"" . $_POST['frmIDLog'] . "\" LIMIT 1";
+    $surname = $conn->query($sqlgetsurname);
+    $surnamestring = "";
+
+    while ($row = mysqli_fetch_array($surname)) {
+        $surnamestring .= $row['surname'];
+    }
+
+    if ($passwordverified == true && $rolestring != 'un-authorized' && ($surnamestring == $_POST['frmSurnameLog']) && ($forenamestring == $_POST['frmForenameLog'])) {
         echo "Logged in!";
 
         $_SESSION['loginfailed'] = False;
@@ -45,6 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
         $_SESSION['role'] = $rolestring;
         $_SESSION['firstname'] = $_POST['frmForenameLog'];
         $_SESSION['surname'] = $_POST['frmSurnameLog'];
+        $_SESSION['id'] = $_POST['frmIDLog'];
 
         header("Location: ../index.php");
         die();
@@ -57,6 +74,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
         unset($_SESSION['firstname']);
         unset($_SESSION['surname']);
         unset($_SESSION['role']);
+        unset($_SESSION['id']);
 
         header("Location: ../login.html");
         die();
