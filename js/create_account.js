@@ -49,7 +49,16 @@ function validation() {
     validationpassed = false;
   }
 
-  if (document.getElementById("frmCourse1").checked === false && document.getElementById("frmCourse2").checked === false && document.getElementById("frmCourse3").checked === false) {
+  let allTheOptions = document.querySelectorAll('#frmCourse option');
+  let answer = [];
+  allTheOptions.forEach(function(items,i) {
+    if (items.selected) {
+      answer.push(i);
+    }
+  })
+  console.log(answer);
+
+  if (answer.length === 0) {
     validationfailed.push("frmCourse");
     validationpassed = false;
   }
@@ -110,7 +119,6 @@ function clearform() {
   document.getElementById("frmDateOfBirth").setAttribute("max", today);
   document.getElementById("frmDateOfBirth").value = today;
   document.getElementById("frmAge").value = '12';
-  document.getElementById("frmCourse").value = '';
   document.getElementById("frmPwd").value = '';
   document.getElementById('pwderror').style.display = 'none';
   document.getElementById('forenameerror').style.display = 'none';
@@ -120,3 +128,9 @@ function clearform() {
   document.getElementById('ageerror').style.display = 'none';
   }
 }
+
+$("select").multipleSelect({
+  multiple: true,
+  multipleWidth: 100,
+  width: '100%'
+});

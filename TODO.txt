@@ -1,5 +1,5 @@
 Prevent SQL injection (msqli escape string on user input every sql statement)
-Allow students to signup to multiple courses (Multiple Select with Groups)
+Allow students to signup to multiple courses dynamically (Multiple Select with Groups)
 
 Basic upload/ download file system:
 

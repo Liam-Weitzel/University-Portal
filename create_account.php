@@ -1,9 +1,18 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include('php/dbconnect.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/account.php">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css">
   <title>Create Account</title>
   <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
 </head>
@@ -49,15 +58,42 @@
         <input type="radio" name="frmGender" value="female"> Female<br>
         <input type="radio" name="frmGender" value="other"> Other<br>
         <p class="gendererror" id="gendererror">* Select one</p>
-      </div>
+      </div><br>
     
       <div class="form-group" id="frmCourse">
         <label>Course:</label><br>
+        <!--
           <input type="checkbox" name="frmCourse1" id="frmCourse1" value="databases"> Databases<br>
           <input type="checkbox" name="frmCourse2" id="frmCourse2" value="websites"> Websites<br>
           <input type="checkbox" name="frmCourse3" id="frmCourse3" value="networks"> Networks<br>
+        -->
+
+        <?php
+        //get all courses and display them in this select thing, give them an ID&NAME equal to the name on the DB + select
+
+        $getlistcourses = "SELECT `course` FROM `courses` GROUP BY `course`";
+        $getlistcoursesresult = $conn->query($getlistcourses);
+        $listCoursesString = "";
+
+        while ($row = mysqli_fetch_array($getlistcoursesresult)) {
+            $listCoursesString .= $row['course'] . ',';
+        }
+        //example output: $listcoursesstring = 'databases,networks,websites';
+        $coursesArray = explode(",", $listCoursesString); //turn $listcoursesstring into array
+        $coursesArraypop = array_pop($coursesArray);
+        //loop over each element in array and echo <option value="$array[i]">$array[i]</option>
+        ?>
+
+        <select multiple="multiple" id="frmCourse" name="frmCourse">
+        <?php
+        for($i = 0; $i < count($coursesArray); $i++) {
+            echo "<option value=\"" . $coursesArray[$i] . "\">" . ucfirst($coursesArray[$i]) . "</option>";
+        }
+        ?>
+        </select>
+
         <p class="courseerror" id="courseerror">* Select atleast one</p>
-      </div>
+      </div><br>
 
       <div class="form-group">
         <a class="btn btn-default" onclick="clearform();">Clear form</a>
@@ -69,6 +105,9 @@
     </div>
   </form>
 </div>
-  <script type="text/javascript" src="js/create_account.js"></script>
+
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
+<script type="text/javascript" src="js/create_account.js"></script>
 </html>

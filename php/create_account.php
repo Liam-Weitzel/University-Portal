@@ -35,13 +35,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForename'])) {
         $sqlInsertCourses3 = "INSERT INTO `courses`(`id`, `forename`, `surname`, `course`, `authorized`, `userid`) VALUES (NULL,'" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmCourse3'] . "', '" . "0" . "', '" . $useridstring . "')";
     }
 
-    if ($conn->query($sqlInsertAccount) and $conn->query($sqlInsertCourses1) and $conn->query($sqlInsertCourses2) and $conn->query($sqlInsertCourses3)) {
+    if ($conn->query($sqlInsertAccount) and $conn->query($sqlInsertCourses) and $conn->query($sqlInsertCourses2) and $conn->query($sqlInsertCourses3)) {
         echo "Account created!";
         header("Location: ../login.html");
         die();
     } else{
         echo "Something went wrong. Please try again.";
-        header("Location: ../create_account.html");
+        header("Location: ../create_account.php");
       die();
     }
 }
