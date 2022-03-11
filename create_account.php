@@ -84,7 +84,7 @@ include('php/dbconnect.php');
         //loop over each element in array and echo <option value="$array[i]">$array[i]</option>
         ?>
 
-        <select multiple="multiple" id="frmCourse" name="frmCourse">
+        <select multiple="multiple" id="frmCourse" name="frmCourse[]">
         <?php
         for($i = 0; $i < count($coursesArray); $i++) {
             echo "<option value=\"" . $coursesArray[$i] . "\">" . ucfirst($coursesArray[$i]) . "</option>";
