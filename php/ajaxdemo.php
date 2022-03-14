@@ -9,8 +9,8 @@ error_reporting(E_ALL);
 include('../php/dbconnect.php');
 
 if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['something'])) {
-
-    $sql = "SELECT * FROM `accounts` WHERE `forename`=\"" . $_GET['something'] . "\"";
+    $escaped_something = mysqli_real_escape_string($conn, $_GET['something']);
+    $sql = "SELECT * FROM `accounts` WHERE `forename`=\"" . $escaped_something . "\"";
     $result = $conn->query($sql);
     $string = "";
 

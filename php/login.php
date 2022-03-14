@@ -10,7 +10,12 @@ include('dbconnect.php');
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
 
-    $sqlgetsalt = "SELECT `salt` FROM `accounts` WHERE `id`=\"" . $_POST['frmIDLog'] . "\" LIMIT 1";
+    $frmIDLogEscaped = mysqli_real_escape_string($conn, $_POST['frmIDLog']);
+    $frmPwdLogEscaped = mysqli_real_escape_string($conn, $_POST['frmPwdLog']);
+    $frmSurnameLogEscaped = mysqli_real_escape_string($conn, $_POST['frmSurnameLog']);
+    $frmForenameLogEscaped = mysqli_real_escape_string($conn, $_POST['frmForenameLog']);
+
+    $sqlgetsalt = "SELECT `salt` FROM `accounts` WHERE `id`=\"" . $frmIDLogEscaped . "\" LIMIT 1";
     $salt = $conn->query($sqlgetsalt);
     $saltstring = "";
 
@@ -18,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
         $saltstring .= $row['salt'];
     }
 
-    $sqlgethash = "SELECT `hash` FROM `accounts` WHERE `id`=\"" . $_POST['frmIDLog'] . "\" LIMIT 1";
+    $sqlgethash = "SELECT `hash` FROM `accounts` WHERE `id`=\"" . $frmIDLogEscaped . "\" LIMIT 1";
     $hash = $conn->query($sqlgethash);
     $hashstring = "";
 
@@ -26,10 +31,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
         $hashstring .= $row['hash'];
     }
 
-    $passwordsalted = $_POST['frmPwdLog'] . $saltstring;
+    $passwordsalted = $frmPwdLogEscaped . $saltstring;
     $passwordverified = password_verify($passwordsalted, $hashstring);
 
-    $sqlgetrole = "SELECT `role` FROM `accounts` WHERE `id`=\"" . $_POST['frmIDLog'] . "\" LIMIT 1";
+    $sqlgetrole = "SELECT `role` FROM `accounts` WHERE `id`=\"" . $frmIDLogEscaped . "\" LIMIT 1";
     $role = $conn->query($sqlgetrole);
     $rolestring = "";
 
@@ -37,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
         $rolestring .= $row['role'];
     }
 
-    $sqlgetforename = "SELECT `forename` FROM `accounts` WHERE `id`=\"" . $_POST['frmIDLog'] . "\" LIMIT 1";
+    $sqlgetforename = "SELECT `forename` FROM `accounts` WHERE `id`=\"" . $frmIDLogEscaped . "\" LIMIT 1";
     $forename = $conn->query($sqlgetforename);
     $forenamestring = "";
 
@@ -45,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
         $forenamestring .= $row['forename'];
     }
 
-    $sqlgetsurname = "SELECT `surname` FROM `accounts` WHERE `id`=\"" . $_POST['frmIDLog'] . "\" LIMIT 1";
+    $sqlgetsurname = "SELECT `surname` FROM `accounts` WHERE `id`=\"" . $frmIDLogEscaped . "\" LIMIT 1";
     $surname = $conn->query($sqlgetsurname);
     $surnamestring = "";
 
@@ -53,15 +58,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForenameLog'])) {
         $surnamestring .= $row['surname'];
     }
 
-    if ($passwordverified == true && $rolestring != 'un-authorized' && ($surnamestring == $_POST['frmSurnameLog']) && ($forenamestring == $_POST['frmForenameLog'])) {
+    if ($passwordverified == true && $rolestring != 'un-authorized' && ($surnamestring == $frmSurnameLogEscaped) && ($forenamestring == $frmForenameLogEscaped)) {
         echo "Logged in!";
 
         $_SESSION['loginfailed'] = False;
         $_SESSION['loggedin'] = True;
         $_SESSION['role'] = $rolestring;
-        $_SESSION['firstname'] = $_POST['frmForenameLog'];
-        $_SESSION['surname'] = $_POST['frmSurnameLog'];
-        $_SESSION['id'] = $_POST['frmIDLog'];
+        $_SESSION['firstname'] = $frmForenameLogEscaped;
+        $_SESSION['surname'] = $frmSurnameLogEscaped;
+        $_SESSION['id'] = $frmIDLogEscaped;
 
         header("Location: ../index.php");
         die();

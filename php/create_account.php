@@ -7,9 +7,16 @@ error_reporting(E_ALL);
 include('dbconnect.php');
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForename'])) {
+    $frmPwdEscaped = mysqli_real_escape_string($conn, $_POST['frmPwd']);
+    $frmForenameEscaped = mysqli_real_escape_string($conn, $_POST['frmForename']);
+    $frmSurnameEscaped = mysqli_real_escape_string($conn, $_POST['frmSurname']);
+    $frmDateOfBirthEscaped = mysqli_real_escape_string($conn, $_POST['frmDateOfBirth']);
+    $frmAgeEscaped = mysqli_real_escape_string($conn, $_POST['frmAge']);
+    $frmGenderEscaped = mysqli_real_escape_string($conn, $_POST['frmGender']);
+
     //INSERT DATA INTO DB
     $salt = getSalt();
-    $passwordsalted = $_POST['frmPwd'] . $salt;
+    $passwordsalted = $frmPwdEscaped . $salt;
     $passwordhashed = password_hash($passwordsalted, PASSWORD_DEFAULT);
 
     $sqlgetuserid = "SELECT MAX(`id`) AS idmax FROM `accounts`";
@@ -20,9 +27,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForename'])) {
         $useridstring .= $row['idmax']+1;
     }
 
-    $sqlInsertAccount = "INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `hash`, `salt`, `role`) VALUES (NULL, '" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmDateOfBirth'] . "', '" . $_POST['frmAge'] . "', '" . $_POST['frmGender'] . "', '" . (string)$passwordhashed . "', '" . (string)$salt . "', '" . "un-authorized" . "') ";
+    $sqlInsertAccount = "INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `hash`, `salt`, `role`) VALUES (NULL, '" . $frmForenameEscaped . "', '" . $frmSurnameEscaped . "', '" . $frmDateOfBirthEscaped . "', '" . $frmAgeEscaped . "', '" . $frmGenderEscaped . "', '" . (string)$passwordhashed . "', '" . (string)$salt . "', '" . "un-authorized" . "') ";
 
-    if ($conn->query($sqlInsertAccount) and insertcourses($conn, $useridstring)) {
+    if ($conn->query($sqlInsertAccount) and insertcourses($conn, $useridstring, $frmForenameEscaped, $frmSurnameEscaped)) {
         echo "Account created!";
         header("Location: ../login.html");
         die();
@@ -35,10 +42,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['frmForename'])) {
 
 $conn->close();
 
-function insertcourses($conn, $useridstring) {
+function insertcourses($conn, $useridstring, $frmForenameEscaped, $frmSurnameEscaped) {
 
     for($i = 0; $i < count($_POST['frmCourse']); $i++) {
-        $sqlInsertCourses = "INSERT INTO `courses`(`id`, `forename`, `surname`, `course`, `authorized`, `userid`) VALUES (NULL,'" . $_POST['frmForename'] . "', '" . $_POST['frmSurname'] . "', '" . $_POST['frmCourse'][$i] . "', '" . "0" . "', '" . $useridstring . "')";
+        $sqlInsertCourses = "INSERT INTO `courses`(`id`, `forename`, `surname`, `course`, `authorized`, `userid`) VALUES (NULL,'" . $frmForenameEscaped . "', '" . $frmSurnameEscaped . "', '" . $_POST['frmCourse'][$i] . "', '" . "0" . "', '" . $useridstring . "')";
         $conn->query($sqlInsertCourses);
     }
 
