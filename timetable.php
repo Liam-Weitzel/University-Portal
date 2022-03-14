@@ -11,21 +11,12 @@ if($_SESSION['loginfailed'] == False && $_SESSION['loggedin'] == True) {
     header("Location: ../login.html");
     die();
 }
+
+include("embeds/preamble.php");
+include("embeds/navbar.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/timetable.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
-</head>
 <body onload="getTimetableDataAJAX();">
-
-<?php include("embeds/navbar.php") ?>
 
 <div class="timetable-full">
   <div class="week-names">
