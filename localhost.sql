@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 07, 2022 at 03:27 PM
+-- Generation Time: Mar 14, 2022 at 11:32 AM
 -- Server version: 10.3.34-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -55,28 +55,80 @@ INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `courses`
+-- Table structure for table `course`
 --
 
-CREATE TABLE `courses` (
+CREATE TABLE `course` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `creditvalue` int(11) NOT NULL,
+  `ownerid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `name`, `creditvalue`, `ownerid`) VALUES
+(1, 'databases', 20, 24),
+(2, 'websites', 20, 24),
+(3, 'networks', 20, 24);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courseusingresource`
+--
+
+CREATE TABLE `courseusingresource` (
+  `id` int(11) NOT NULL,
+  `resourceid` int(11) NOT NULL,
+  `courseid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resource`
+--
+
+CREATE TABLE `resource` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `datefrom` date NOT NULL,
+  `dateuntil` date NOT NULL,
+  `ownerid` int(11) NOT NULL,
+  `extension` varchar(255) NOT NULL,
+  `size` int(11) NOT NULL,
+  `path` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studenttakingcourse`
+--
+
+CREATE TABLE `studenttakingcourse` (
   `id` int(11) NOT NULL,
   `forename` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
   `course` varchar(255) NOT NULL,
+  `courseid` int(11) NOT NULL,
   `authorized` int(11) NOT NULL,
   `userid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `courses`
+-- Dumping data for table `studenttakingcourse`
 --
 
-INSERT INTO `courses` (`id`, `forename`, `surname`, `course`, `authorized`, `userid`) VALUES
-(1, 'testtestt', 'testtestt', 'databases', 0, 28),
-(2, 'Liam', 'Weitzel', 'databases', 1, 24),
-(3, 'Stephanie', 'Rosenkranz', 'databases', 0, 25),
-(4, 'Liam', 'Weitzel', 'networks', 1, 24),
-(5, 'Sam', 'Collins', 'websites', 0, 29);
+INSERT INTO `studenttakingcourse` (`id`, `forename`, `surname`, `course`, `courseid`, `authorized`, `userid`) VALUES
+(1, 'testtestt', 'testtestt', 'databases', 1, 0, 28),
+(2, 'Liam', 'Weitzel', 'databases', 1, 1, 24),
+(3, 'Stephanie', 'Rosenkranz', 'databases', 1, 0, 25),
+(4, 'Liam', 'Weitzel', 'networks', 3, 1, 24),
+(5, 'Sam', 'Collins', 'websites', 2, 0, 29);
 
 -- --------------------------------------------------------
 
@@ -92,7 +144,7 @@ CREATE TABLE `timetable` (
   `line2` varchar(255) NOT NULL,
   `line3` varchar(255) NOT NULL,
   `line4` varchar(255) NOT NULL,
-  `course` varchar(255) NOT NULL,
+  `courseid` int(11) NOT NULL,
   `color` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -100,13 +152,13 @@ CREATE TABLE `timetable` (
 -- Dumping data for table `timetable`
 --
 
-INSERT INTO `timetable` (`id`, `day`, `time`, `line1`, `line2`, `line3`, `line4`, `course`, `color`) VALUES
-(1, 0, 0, 'Lecture', 'Computer graphics', 'Location: LTCC', 'Mark Greenwood', 'databases', 0),
-(2, 0, 1, 'Seminar', 'Computer graphics', 'Location: FML301', 'Mark Greenwood', 'databases', 0),
-(3, 0, 3, 'Lecture', 'Web development', 'Location: LTCC', 'Neil Buckley', 'databases', 1),
-(4, 0, 4, 'Seminar', 'Web development', 'Location: FML401', 'Neil Buckley', 'databases', 1),
-(5, 0, 6, 'Lecture', 'OOSD', 'Location: EDEN1', 'Kapil', 'databases', 2),
-(8, 1, 1, 'Lecture', 'Datalink Layer', 'Location: FML411', 'Mark Greenwood', 'networks', 5);
+INSERT INTO `timetable` (`id`, `day`, `time`, `line1`, `line2`, `line3`, `line4`, `courseid`, `color`) VALUES
+(1, 0, 0, 'Lecture', 'Computer graphics', 'Location: LTCC', 'Mark Greenwood', 1, 0),
+(2, 0, 1, 'Seminar', 'Computer graphics', 'Location: FML301', 'Mark Greenwood', 1, 0),
+(3, 0, 3, 'Lecture', 'Web development', 'Location: LTCC', 'Neil Buckley', 1, 1),
+(4, 0, 4, 'Seminar', 'Web development', 'Location: FML401', 'Neil Buckley', 1, 1),
+(5, 0, 6, 'Lecture', 'OOSD', 'Location: EDEN1', 'Kapil', 1, 2),
+(8, 1, 1, 'Lecture', 'Datalink Layer', 'Location: FML411', 'Mark Greenwood', 3, 5);
 
 --
 -- Indexes for dumped tables
@@ -119,9 +171,27 @@ ALTER TABLE `accounts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `courses`
+-- Indexes for table `course`
 --
-ALTER TABLE `courses`
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `courseusingresource`
+--
+ALTER TABLE `courseusingresource`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `resource`
+--
+ALTER TABLE `resource`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `studenttakingcourse`
+--
+ALTER TABLE `studenttakingcourse`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -141,9 +211,27 @@ ALTER TABLE `accounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `courses`
+-- AUTO_INCREMENT for table `course`
 --
-ALTER TABLE `courses`
+ALTER TABLE `course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `courseusingresource`
+--
+ALTER TABLE `courseusingresource`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `resource`
+--
+ALTER TABLE `resource`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `studenttakingcourse`
+--
+ALTER TABLE `studenttakingcourse`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --

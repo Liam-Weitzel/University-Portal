@@ -45,7 +45,15 @@ $conn->close();
 function insertcourses($conn, $useridstring, $frmForenameEscaped, $frmSurnameEscaped) {
 
     for($i = 0; $i < count($_POST['frmCourse']); $i++) {
-        $sqlInsertCourses = "INSERT INTO `courses`(`id`, `forename`, `surname`, `course`, `authorized`, `userid`) VALUES (NULL,'" . $frmForenameEscaped . "', '" . $frmSurnameEscaped . "', '" . $_POST['frmCourse'][$i] . "', '" . "0" . "', '" . $useridstring . "')";
+        $sqlgetcourseid = "SELECT `id` FROM `course` WHERE `name` = '" . $_POST['frmCourse'][$i] . "'";
+        $courseidresult = $conn->query($sqlgetcourseid);
+        $courseidstring = "";
+
+        while ($row = mysqli_fetch_array($courseidresult)) {
+            $courseidstring .= $row['id'];
+        }
+
+        $sqlInsertCourses = "INSERT INTO `studenttakingcourse`(`id`, `forename`, `surname`, `course`, `courseid`, `authorized`, `userid`) VALUES (NULL,'" . $frmForenameEscaped . "', '" . $frmSurnameEscaped . "', '" . $_POST['frmCourse'][$i] . "', '" . $courseidstring . "', '" . "0" . "', '" . $useridstring . "')";
         $conn->query($sqlInsertCourses);
     }
 

@@ -71,7 +71,7 @@ include('php/dbconnect.php');
         <?php
         //get all courses and display them in this select thing, give them an ID&NAME equal to the name on the DB + select
 
-        $getlistcourses = "SELECT `course` FROM `courses` GROUP BY `course`";
+        $getlistcourses = "SELECT `course` FROM `studenttakingcourse` GROUP BY `course`";
         $getlistcoursesresult = $conn->query($getlistcourses);
         $listCoursesString = "";
 

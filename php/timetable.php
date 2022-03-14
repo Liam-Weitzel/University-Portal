@@ -10,12 +10,12 @@ include('../php/dbconnect.php');
 
 if($_SERVER['REQUEST_METHOD'] == "GET") {
 
-    $getcourse = "SELECT `course` FROM `courses` WHERE `userid`=\"" . $_SESSION['id'] . "\" AND `authorized`=\"" . '1' . "\"";
+    $getcourse = "SELECT `courseid` FROM `studenttakingcourse` WHERE `userid`=\"" . $_SESSION['id'] . "\" AND `authorized`=\"" . '1' . "\"";
     $getcourseresult = $conn->query($getcourse);
     $usercourse = "";
 
     while ($row = mysqli_fetch_array($getcourseresult)) {
-        $usercourse .= $row['course'] . ',';
+        $usercourse .= $row['courseid'] . ',';
     }
 
     $usercourse = explode(',', $usercourse);
@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
     $timetableresultcolor = "";
 
     for($i = 0; $i < count($usercourse); $i++) {
-        $gettimetable = "SELECT * FROM `timetable` WHERE `course`=\"" . $usercourse[$i] . "\"";
+        $gettimetable = "SELECT * FROM `timetable` WHERE `courseid`=\"" . $usercourse[$i] . "\"";
         $gettimetableresult = $conn->query($gettimetable);
 
         while ($row = mysqli_fetch_array($gettimetableresult)) {
