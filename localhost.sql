@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 14, 2022 at 11:32 AM
+-- Generation Time: Mar 15, 2022 at 03:35 PM
 -- Server version: 10.3.34-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -47,7 +47,7 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `hash`, `salt`, `role`) VALUES
-(24, 'Liam', 'Weitzel', '2002-06-23', 19, 'male', '$2y$10$K/jjJkuai16O9Fm50SBj2OCvt8tBpVxJhu0aSuEpgf3lX46jlYw/K', 'JI9gk-#|YYA', 'student'),
+(24, 'Liam', 'Weitzel', '2002-06-23', 19, 'male', '$2y$10$K/jjJkuai16O9Fm50SBj2OCvt8tBpVxJhu0aSuEpgf3lX46jlYw/K', 'JI9gk-#|YYA', 'tutor'),
 (25, 'Stephanie', 'Rosenkranz', '1965-03-17', 56, 'female', '$2y$10$GGdGH2vwWlT6WMUce73cdufW518iVCEx7eIehGn4flsX1wEoE5UjK', 'Vb0j?,9s0w$', 'student'),
 (28, 'testtestt', 'testtestt', '2002-06-23', 19, 'male', '$2y$10$FLc9jD4aWvOnAyQoOKtgFeXgLmkyyHKcDqlQbAz3Jr3xfmQTwfR/a', 'djx|Tb}W}#', 'student'),
 (29, 'Sam', 'Collins', '1999-08-08', 22, 'male', '$2y$10$qS2ooKgl9EzzhNckW88jnONcTVbaQ6Di4.S1KZg1jB3E7aBINx2vy', 'u;GoZJ6h/M)', 'student');
@@ -100,7 +100,8 @@ CREATE TABLE `resource` (
   `ownerid` int(11) NOT NULL,
   `extension` varchar(255) NOT NULL,
   `size` int(11) NOT NULL,
-  `path` varchar(255) NOT NULL
+  `path` varchar(255) NOT NULL,
+  `folder` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -208,7 +209,7 @@ ALTER TABLE `timetable`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `course`
@@ -232,7 +233,7 @@ ALTER TABLE `resource`
 -- AUTO_INCREMENT for table `studenttakingcourse`
 --
 ALTER TABLE `studenttakingcourse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `timetable`

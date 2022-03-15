@@ -1,34 +1,3 @@
-Tutor role/ course admin page etc.
-
-Basic upload/ download file system:
-
-<form method="post" action="" enctype="multipart/form-data"> 
-    <input type="file" name="uploadFile"/>
-    <input type="submit" value="upload_file"/>
-</form>
-
-<?php
-    if (isset($_FILES["uploadFile"])) {
-        $file = $_FILES["uploadFile"];
-        $fileName = $file["name"];
-        $fileTempName = $file["tmp_name"];
-        $fileError = $file["error"];
-        $fileSize = $file["size"];
-        $pathInfo = pathinfo($fileName);
-        $extension = $pathInfo["extension"];
-
-        if (move_uploaded_file($fileTempName, "../uploads/$fileName")) {
-            echo "<p>File uploaded :-)</p>";
-        } else {
-            echo "<p>File not uploaded :-(</p>";
-        }   
-    }
-?>
-
-----
-
-Scan all files in dir:
-
-<?php
-    $files = scandir("../uploads");
-?>
+Test and get file uploading working
+Only display files if conditions are met (date, course etc.)
+Display files using folder structure

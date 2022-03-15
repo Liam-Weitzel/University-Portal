@@ -11,10 +11,17 @@ function getDocumentsDataAJAX(role, courses) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             // Typical action to be performed when the document is ready:
-            document.getElementById("ajaxtest").innerHTML = xhttp.responseText;
+            document.getElementById("documentslist").innerHTML = xhttp.responseText;
         }
     };
 
-    xhttp.open("GET", "php/documents.php", true);
+    xhttp.open("GET", "php/documents.php?getdocuments=true", true);
     xhttp.send();
+}
+
+function validation() {
+    //file type validation
+    //file size validation
+    //user input fields validation
+    return true;
 }
