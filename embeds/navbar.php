@@ -26,7 +26,7 @@
                 <a class="nav-link" href="#"><i class="far fa-chart-bar"></i>Charts</a>
             </li>
             <li class="nav-item <?php echo ($_SESSION['activepage'] == 'documents') ? 'active' : ''; ?>">
-                <a class="nav-link" href="#"><i class="far fa-copy"></i>Documents</a>
+                <a class="nav-link" href="../documents.php"><i class="far fa-copy"></i>Documents</a>
             </li>
         </ul>
     </div>
