@@ -1,3 +1,3 @@
-Test and get file uploading working
-Only display files if conditions are met (date, course etc.)
-Display files using folder structure
+Only display files if conditions are met (date, course)
+Display files using folder structure (course, folder)
+Style file uploading form

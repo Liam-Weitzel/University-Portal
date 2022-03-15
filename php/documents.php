@@ -24,12 +24,11 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
     $datefrom = $_POST["dateFrom"];
     $dateuntil = $_POST["dateUntil"];
     $ownerid = $_SESSION['id'];
-    $courseid = $_POST["courseId"];
-    $folder = $_POST["folder"];
-    $path_move = "../uploads/$fileName";
-    $path_real = "uploads/$fileName";
+    $folder = $_POST['folder'];
+    $path_move = "../uploads/" . $fileName;
+    $path_real = "uploads/" . $fileName;
 
-    $sqlInsertFile = "INSERT INTO `resource`(`id`, `name`, `datefrom`, `dateuntil`, `ownerid`, `extension`, `size`, `path`, `folder`) VALUES (null,$fileName,$datefrom,$dateuntil,$ownerid,$extension,$fileSize,$path_real,$folder)";
+    $sqlInsertFile = "INSERT INTO `resource`(`id`, `name`, `datefrom`, `dateuntil`, `ownerid`, `extension`, `size`, `path`, `folder`) VALUES (null,'" . $fileName . "','" . $datefrom . "','" . $dateuntil . "','" . $ownerid ."','" . $extension . "','" . $fileSize . "','" . $path_real . "','" . $folder . "')";
 
     $sqlgetfileid = "SELECT MAX(`id`) AS idmax FROM `resource`";
     $fileidresult = $conn->query($sqlgetfileid);
@@ -39,18 +38,30 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
         $fileidstring .= $row['idmax']+1;
     }
 
-    $sqlInsertFileCourse = "INSERT INTO `courseusingresource`(`id`, `resourceid`, `courseid`) VALUES (null,$fileidstring,$courseid)";
-
-    if (move_uploaded_file($fileTempName, $path_move) and $conn->query($sqlInsertAccount) and $conn->query($sqlInsertFileCourse)) {
+    if (movefile($fileTempName, $path_move) and $conn->query($sqlInsertFile) and insertfilecourse($conn, $fileidstring)) {
        echo "<p>File uploaded :-)</p>";
        header("Location: ../documents.php");
        die();
     } else {
        echo "<p>File not uploaded :-(</p>";
-       header("Location: ../documents.php");
-       die();
+       //header("Location: ../documents.php");
+       //die();
     }
 }
 $conn->close();
+
+function insertfilecourse($conn, $fileidstring) {
+    for($i = 0; $i < count($_POST['courseId']); $i++) {
+        $courseid = $_POST["courseId"][$i];
+
+        $sqlInsertFileCourse = "INSERT INTO `courseusingresource`(`id`, `resourceid`, `courseid`) VALUES (null," . $fileidstring . "," . $courseid . ")";
+        $conn->query($sqlInsertFileCourse);
+    }
+    return true;
+}
+
+function movefile($fileTempName, $path_move) {
+    return move_uploaded_file($fileTempName, $path_move);
+}
 
 ?>

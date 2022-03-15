@@ -22,6 +22,14 @@ function getDocumentsDataAJAX(role, courses) {
 function validation() {
     //file type validation
     //file size validation
-    //user input fields validation
+    //validate date until > date from
+    //validate date from >= today
+    //
     return true;
 }
+
+$("select").multipleSelect({
+    multiple: true,
+    multipleWidth: 100,
+    width: '100%'
+});
