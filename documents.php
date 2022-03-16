@@ -21,6 +21,7 @@ include("embeds/navbar.php");
 
 <p id="documentslist"></p>
 <button onclick="getDocumentsDataAJAX();">refresh</button>
+<br><br><br><br><br><br>
 
 <?php
 if($_SESSION['role'] == 'tutor') {
@@ -42,9 +43,9 @@ if($_SESSION['role'] == 'tutor') {
     $coursesIdArraypop = array_pop($coursesIdArray);
     //loop over each element in array and echo <option value="$array[i]">$array[i]</option>
 
-    echo "
-    <br><br><br><br><br><br>
-    <form method=\"post\" onsubmit=\"return validation();\" action=\"/php/documents.php\" enctype=\"multipart/form-data\">
+    if (count($coursesArray) > 0) {
+        echo "
+        <form method=\"post\" onsubmit=\"return validation();\" action=\"/php/documents.php\" enctype=\"multipart/form-data\">
         <input type=\"date\" name=\"dateFrom\"/>
         <input type=\"date\" name=\"dateUntil\"/>
         <input type=\"text\" name=\"folder\"/>
@@ -57,8 +58,12 @@ if($_SESSION['role'] == 'tutor') {
         </select>
         <input type=\"file\" name=\"uploadFile\"/>
         <input type=\"submit\" value=\"upload_file\"/>
-    </form>
-    ";
+        </form>
+        ";
+    }
+    else {
+        echo "<p> You arent authorized to upload documents to any courses. </p>";
+    }
 }
 ?>
 

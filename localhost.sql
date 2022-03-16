@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 15, 2022 at 03:35 PM
+-- Generation Time: Mar 16, 2022 at 12:26 AM
 -- Server version: 10.3.34-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -49,8 +49,9 @@ CREATE TABLE `accounts` (
 INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`, `hash`, `salt`, `role`) VALUES
 (24, 'Liam', 'Weitzel', '2002-06-23', 19, 'male', '$2y$10$K/jjJkuai16O9Fm50SBj2OCvt8tBpVxJhu0aSuEpgf3lX46jlYw/K', 'JI9gk-#|YYA', 'tutor'),
 (25, 'Stephanie', 'Rosenkranz', '1965-03-17', 56, 'female', '$2y$10$GGdGH2vwWlT6WMUce73cdufW518iVCEx7eIehGn4flsX1wEoE5UjK', 'Vb0j?,9s0w$', 'student'),
-(28, 'testtestt', 'testtestt', '2002-06-23', 19, 'male', '$2y$10$FLc9jD4aWvOnAyQoOKtgFeXgLmkyyHKcDqlQbAz3Jr3xfmQTwfR/a', 'djx|Tb}W}#', 'student'),
-(29, 'Sam', 'Collins', '1999-08-08', 22, 'male', '$2y$10$qS2ooKgl9EzzhNckW88jnONcTVbaQ6Di4.S1KZg1jB3E7aBINx2vy', 'u;GoZJ6h/M)', 'student');
+(28, 'testtestt', 'testtestt', '2002-06-23', 19, 'male', '$2y$10$FLc9jD4aWvOnAyQoOKtgFeXgLmkyyHKcDqlQbAz3Jr3xfmQTwfR/a', 'djx|Tb}W}#', 'un-authorized'),
+(29, 'Sam', 'Collins', '1999-08-08', 22, 'male', '$2y$10$qS2ooKgl9EzzhNckW88jnONcTVbaQ6Di4.S1KZg1jB3E7aBINx2vy', 'u;GoZJ6h/M)', 'student'),
+(73, 'John', 'Doe', '2001-05-05', 20, 'male', '$2y$10$EYg6NmQ4EsgJUze45z4Tgus7nBBpGFd3OTnrFobJQYIl4d6ZjVKCS', 'g^peGirIM|', 'tutor');
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,7 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`id`, `name`, `creditvalue`, `ownerid`) VALUES
-(1, 'databases', 20, 24),
+(1, 'databases', 20, 73),
 (2, 'websites', 20, 24),
 (3, 'networks', 20, 24);
 
@@ -129,7 +130,9 @@ INSERT INTO `studenttakingcourse` (`id`, `forename`, `surname`, `course`, `cours
 (2, 'Liam', 'Weitzel', 'databases', 1, 1, 24),
 (3, 'Stephanie', 'Rosenkranz', 'databases', 1, 0, 25),
 (4, 'Liam', 'Weitzel', 'networks', 3, 1, 24),
-(5, 'Sam', 'Collins', 'websites', 2, 0, 29);
+(5, 'Sam', 'Collins', 'websites', 2, 0, 29),
+(48, 'John', 'Doe', 'databases', 1, 1, 73),
+(49, 'John', 'Doe', 'websites', 2, 1, 73);
 
 -- --------------------------------------------------------
 
@@ -209,7 +212,7 @@ ALTER TABLE `timetable`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `course`
@@ -221,19 +224,19 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `courseusingresource`
 --
 ALTER TABLE `courseusingresource`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `resource`
 --
 ALTER TABLE `resource`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `studenttakingcourse`
 --
 ALTER TABLE `studenttakingcourse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `timetable`
