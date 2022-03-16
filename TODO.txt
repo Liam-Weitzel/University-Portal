@@ -1,3 +1,5 @@
 Only display files if conditions are met (date, course)
 Display files using folder structure (course, folder)
+
 Style file uploading form
+Validate upload form -> show error tooltips

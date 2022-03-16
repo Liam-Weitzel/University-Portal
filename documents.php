@@ -48,7 +48,7 @@ if($_SESSION['role'] == 'tutor') {
         <form method=\"post\" onsubmit=\"return validation();\" action=\"/php/documents.php\" enctype=\"multipart/form-data\">
         <input type=\"date\" name=\"dateFrom\"/>
         <input type=\"date\" name=\"dateUntil\"/>
-        <input type=\"text\" name=\"folder\"/>
+        <input type=\"text\" name=\"folder\" value=\"root\"/>
         <select multiple=\"multiple\" id=\"courseId\" name=\"courseId[]\">
         ";
         for($i = 0; $i < count($coursesArray); $i++) {

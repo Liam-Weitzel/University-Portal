@@ -24,7 +24,7 @@ function validation() {
     //file size validation
     //validate date until > date from
     //validate date from >= today
-    //
+    //validate no fields left empty
     return true;
 }
 
