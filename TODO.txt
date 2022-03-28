@@ -3,5 +3,3 @@ Display files using folder structure (course, folder)
 
 Style file uploading form
 Validate upload form -> show error tooltips
-
-ESCAPE USER INPUT IN DOCUMENTS.PHP

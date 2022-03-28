@@ -21,10 +21,10 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
     $pathInfo = pathinfo($fileName);
     $extension = $pathInfo["extension"];
 
-    $datefrom = $_POST["dateFrom"];
-    $dateuntil = $_POST["dateUntil"];
+    $datefrom = mysqli_real_escape_string($conn, $_POST["dateFrom"]);
+    $dateuntil = mysqli_real_escape_string($conn, $_POST["dateUntil"]);
     $ownerid = $_SESSION['id'];
-    $folder = $_POST['folder'];
+    $folder = mysqli_real_escape_string($conn, $_POST['folder']);
     $path_move = "../uploads/" . $fileName;
     $path_real = "uploads/" . $fileName;
 
