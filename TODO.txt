@@ -1,5 +1,19 @@
 Only display files if conditions are met (date, course)
 Display files using folder structure (course, folder)
-
 Style file uploading form
 Validate upload form -> show error tooltips
+upload when student downloads file in database
+
+Quiz system
+keep record of student scores and let tutors see these scores
+prevent students from taking quiz again
+
+attendance system?
+allow tutors to authorize students to their course
+tutors can edit their courses timetable
+a progress bar for each student per course (tutors can see each students progress of their course)
+online registration system for each lecture/ seminar
+
+Create admin role, admin role can:
+create new courses and assign tutors to them
+authorize new account creations and assign roles to them
