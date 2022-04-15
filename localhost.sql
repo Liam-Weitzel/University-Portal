@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Mar 16, 2022 at 12:26 AM
--- Server version: 10.3.34-MariaDB-0ubuntu0.20.04.1
--- PHP Version: 7.4.3
+-- Host: 127.0.0.1:3306
+-- Generation Time: Apr 15, 2022 at 06:50 PM
+-- Server version: 5.7.31
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,8 +29,9 @@ USE `uni_portal`;
 -- Table structure for table `accounts`
 --
 
-CREATE TABLE `accounts` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `accounts`;
+CREATE TABLE IF NOT EXISTS `accounts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `forename` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
   `birthday` varchar(255) NOT NULL,
@@ -39,8 +39,9 @@ CREATE TABLE `accounts` (
   `gender` varchar(255) NOT NULL,
   `hash` varchar(255) NOT NULL,
   `salt` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `role` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `accounts`
@@ -59,12 +60,14 @@ INSERT INTO `accounts` (`id`, `forename`, `surname`, `birthday`, `age`, `gender`
 -- Table structure for table `course`
 --
 
-CREATE TABLE `course` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `course`;
+CREATE TABLE IF NOT EXISTS `course` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `creditvalue` int(11) NOT NULL,
-  `ownerid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `ownerid` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `course`
@@ -81,11 +84,20 @@ INSERT INTO `course` (`id`, `name`, `creditvalue`, `ownerid`) VALUES
 -- Table structure for table `courseusingresource`
 --
 
-CREATE TABLE `courseusingresource` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `courseusingresource`;
+CREATE TABLE IF NOT EXISTS `courseusingresource` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `resourceid` int(11) NOT NULL,
-  `courseid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `courseid` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `courseusingresource`
+--
+
+INSERT INTO `courseusingresource` (`id`, `resourceid`, `courseid`) VALUES
+(1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -93,8 +105,9 @@ CREATE TABLE `courseusingresource` (
 -- Table structure for table `resource`
 --
 
-CREATE TABLE `resource` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `resource`;
+CREATE TABLE IF NOT EXISTS `resource` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `datefrom` date NOT NULL,
   `dateuntil` date NOT NULL,
@@ -102,8 +115,16 @@ CREATE TABLE `resource` (
   `extension` varchar(255) NOT NULL,
   `size` int(11) NOT NULL,
   `path` varchar(255) NOT NULL,
-  `folder` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `folder` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `resource`
+--
+
+INSERT INTO `resource` (`id`, `name`, `datefrom`, `dateuntil`, `ownerid`, `extension`, `size`, `path`, `folder`) VALUES
+(1, 'loremipsum.txt', '2022-04-16', '2022-04-29', 24, 'txt', 16, 'uploads/loremipsum.txt', 'root');
 
 -- --------------------------------------------------------
 
@@ -111,15 +132,17 @@ CREATE TABLE `resource` (
 -- Table structure for table `studenttakingcourse`
 --
 
-CREATE TABLE `studenttakingcourse` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `studenttakingcourse`;
+CREATE TABLE IF NOT EXISTS `studenttakingcourse` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `forename` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
   `course` varchar(255) NOT NULL,
   `courseid` int(11) NOT NULL,
   `authorized` int(11) NOT NULL,
-  `userid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `userid` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `studenttakingcourse`
@@ -140,8 +163,9 @@ INSERT INTO `studenttakingcourse` (`id`, `forename`, `surname`, `course`, `cours
 -- Table structure for table `timetable`
 --
 
-CREATE TABLE `timetable` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `timetable`;
+CREATE TABLE IF NOT EXISTS `timetable` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `day` int(11) NOT NULL,
   `time` int(11) NOT NULL,
   `line1` varchar(255) NOT NULL,
@@ -149,8 +173,9 @@ CREATE TABLE `timetable` (
   `line3` varchar(255) NOT NULL,
   `line4` varchar(255) NOT NULL,
   `courseid` int(11) NOT NULL,
-  `color` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `color` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `timetable`
@@ -163,86 +188,6 @@ INSERT INTO `timetable` (`id`, `day`, `time`, `line1`, `line2`, `line3`, `line4`
 (4, 0, 4, 'Seminar', 'Web development', 'Location: FML401', 'Neil Buckley', 1, 1),
 (5, 0, 6, 'Lecture', 'OOSD', 'Location: EDEN1', 'Kapil', 1, 2),
 (8, 1, 1, 'Lecture', 'Datalink Layer', 'Location: FML411', 'Mark Greenwood', 3, 5);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `accounts`
---
-ALTER TABLE `accounts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `course`
---
-ALTER TABLE `course`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `courseusingresource`
---
-ALTER TABLE `courseusingresource`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `resource`
---
-ALTER TABLE `resource`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `studenttakingcourse`
---
-ALTER TABLE `studenttakingcourse`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `timetable`
---
-ALTER TABLE `timetable`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `accounts`
---
-ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
-
---
--- AUTO_INCREMENT for table `course`
---
-ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `courseusingresource`
---
-ALTER TABLE `courseusingresource`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-
---
--- AUTO_INCREMENT for table `resource`
---
-ALTER TABLE `resource`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-
---
--- AUTO_INCREMENT for table `studenttakingcourse`
---
-ALTER TABLE `studenttakingcourse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
-
---
--- AUTO_INCREMENT for table `timetable`
---
-ALTER TABLE `timetable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

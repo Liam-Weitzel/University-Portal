@@ -46,9 +46,11 @@ if($_SESSION['role'] == 'tutor') {
     if (count($coursesArray) > 0) {
         echo "
         <form method=\"post\" onsubmit=\"return validation();\" action=\"/php/documents.php\" enctype=\"multipart/form-data\">
-        <input type=\"date\" name=\"dateFrom\"/>
-        <input type=\"date\" name=\"dateUntil\"/>
-        <input type=\"text\" name=\"folder\" value=\"root\"/>
+        <input id=\"dateFrom\" type=\"date\" name=\"dateFrom\"/>
+        <input id=\"dateUntil\" type=\"date\" name=\"dateUntil\"/>
+        <p id=\"DateError\" style=\"color: red;\"><p>
+        <input id=\"directory\" type=\"text\" name=\"folder\" value=\"root\"/>
+        <p id=\"dirError\" style=\"color: red;\"><p>
         <select multiple=\"multiple\" id=\"courseId\" name=\"courseId[]\">
         ";
         for($i = 0; $i < count($coursesArray); $i++) {
@@ -56,8 +58,10 @@ if($_SESSION['role'] == 'tutor') {
         }
         echo "
         </select>
-        <input type=\"file\" name=\"uploadFile\"/>
-        <input type=\"submit\" value=\"upload_file\"/>
+        <p id=\"courseError\" style=\"color: red;\"><p>
+        <input id=\"UploadFile\" type=\"file\" name=\"uploadFile\"/>
+        <p id=\"FileError\" style=\"color: red;\"><p>
+        <input type=\"submit\" value=\"Submit\"/>
         </form>
         ";
     }

@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
     $dir = scandir("../uploads");
     echo implode("<br>", $dir);
 
-} else if (isset($_FILES["uploadFile"]) and $_SERVER['REQUEST_METHOD'] == "POST" and $_SESSION['role'] == 'tutor') {
+} else if (isset(pathinfo($_FILES["uploadFile"]["name"])["extension"]) and $_SERVER['REQUEST_METHOD'] == "POST" and $_SESSION['role'] == 'tutor') {
     $file = $_FILES["uploadFile"];
     $fileName = $file["name"];
     $fileTempName = $file["tmp_name"];
@@ -44,10 +44,15 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
        die();
     } else {
        echo "<p>File not uploaded :-(</p>";
-       //header("Location: ../documents.php");
-       //die();
+       header("Location: ../documents.php");
+       die();
     }
+} else {
+    echo "<p>File not uploaded :-(</p>";
+    header("Location: ../documents.php");
+    die();
 }
+
 $conn->close();
 
 function insertfilecourse($conn, $fileidstring) {
