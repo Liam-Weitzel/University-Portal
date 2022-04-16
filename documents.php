@@ -19,9 +19,11 @@ include("embeds/navbar.php");
 
 <body onload="getDocumentsDataAJAX();">
 
-<p id="documentslist"></p>
+<div class="documentsouterdiv">
+<p class="documentheader">Documents</p>
+<div id="documentslist"></div><br>
 <button onclick="getDocumentsDataAJAX();">refresh</button>
-<br><br>
+</div>
 
 <?php
 if($_SESSION['role'] == 'tutor') {

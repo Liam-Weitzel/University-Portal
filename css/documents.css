@@ -28,3 +28,20 @@ body{
 .forminnerdiv {
     text-align: center;
 }
+
+.documentheader {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+
+.documentsouterdiv {
+    border: dashed;
+    margin: 50px;
+    padding: 50px;
+    background: linear-gradient(135deg, #79aafc, #c2d2fc);
+    border-radius: 20px;
+    color: #fff;
+    text-align: center;
+}
