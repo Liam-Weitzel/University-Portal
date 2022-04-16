@@ -9,22 +9,37 @@ error_reporting(E_ALL);
 include('../php/dbconnect.php');
 
 if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
+    $names = array();
+    $courses = array();
+
     $sql1 = "SELECT * FROM studenttakingcourse WHERE userid = '".$_SESSION['id']."'";
     $result1 = $conn->query($sql1);
 
     while ($record1 = mysqli_fetch_array($result1)){
-        $sql2 = "SELECT * FROM courseusingresource WHERE courseid = '".$record1['courseid']."'";
+        array_push($courses, array($record1['course'], $record1['courseid']));
+        $sql2 = "SELECT * FROM courseusingresource WHERE courseid = '".$record1['courseid']."' ORDER BY courseid ASC";
         $result2 = $conn->query($sql2);
         while ($record2 = mysqli_fetch_array($result2)){
             $sql3 = "SELECT * FROM resource WHERE available = 'available' AND dateFrom <= CURDATE() AND dateUntil >= CURDATE() AND id = '".$record2['resourceid']."'";
             $result3 = $conn->query($sql3);
 
             while ($record3 = mysqli_fetch_array($result3)){
-                echo("<li><a href='uploads/" . $record3['name'] . "'>" . $record3['name'] . ": " . $record1['course'] . "</a></li>");
+                array_push($names, array($record3['name'], $record1['courseid'], $record3['folder']));
             }
         }
     }
-
+    echo("<div style='display: flex;'>");
+    for($i = 0; $i < count($courses); $i++){
+        echo("<div style='width: calc(100% /" . count($courses) . ")'>");
+        echo("<p>".$courses[$i][0]."</p>");
+        for($ii = 0; $ii < count($names); $ii++) {
+            if($names[$ii][1] == $courses[$i][1]){
+                echo("<p><a href='uploads/" . $names[$ii][0] . "'>" . $names[$ii][0] . ": " . $names[$ii][2] . "</a></p>");
+            }
+        }
+        echo("</div>");
+    }
+    echo("</div>");
 } else if (isset(pathinfo($_FILES["uploadFile"]["name"])["extension"]) and $_SERVER['REQUEST_METHOD'] == "POST" and $_SESSION['role'] == 'tutor') {
     $file = $_FILES["uploadFile"];
     $fileName = $file["name"];

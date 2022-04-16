@@ -1,4 +1,4 @@
-Display files using folder structure (course, folder)
+Display files using folder structure (folder)
 
 Quiz system
 keep record of student scores and let tutors see these scores
