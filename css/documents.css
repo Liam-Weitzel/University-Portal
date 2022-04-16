@@ -45,3 +45,17 @@ body{
     color: #fff;
     text-align: center;
 }
+
+.custom_modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    border: #424242 solid 2px;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    display: none;
+    color: #424242;
+}

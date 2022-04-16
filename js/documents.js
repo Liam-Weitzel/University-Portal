@@ -93,3 +93,15 @@ $("select").multipleSelect({
     multipleWidth: 100,
     width: '100%'
 });
+
+function openmodal(i, ii) {
+    closeallmodals();
+    document.getElementById("modal" + i + "-" + ii).style.display = "block";
+}
+
+function closeallmodals() {
+    var modals = document.getElementsByClassName("custom_modal");
+    for (var i = 0; i < modals.length; i++) {
+        modals[i].style.display = "none";
+    }
+}

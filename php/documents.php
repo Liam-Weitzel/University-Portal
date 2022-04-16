@@ -28,14 +28,30 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
             }
         }
     }
+
     echo("<div style='display: flex;'>");
     for($i = 0; $i < count($courses); $i++){
         echo("<div style='width: calc(100% /" . count($courses) . ")'>");
         echo("<p>".$courses[$i][0]."</p>");
-        for($ii = 0; $ii < count($names); $ii++) {
-            if($names[$ii][1] == $courses[$i][1]){
-                echo("<p><a href='uploads/" . $names[$ii][0] . "'>" . $names[$ii][0] . ": " . $names[$ii][2] . "</a></p>");
+
+        $folders = array();
+        for($iii = 0; $iii < count($names); $iii++){
+            if ($names[$iii][1] == $courses[$i][1]){
+                array_push($folders, $names[$iii][2]);
             }
+        }
+        $folders = array_unique($folders);
+
+        for($ii = 0; $ii < count($folders); $ii++){
+            echo("<a href=\"#\" onclick=\"openmodal(".$i.",".$ii.")\">".$folders[$ii]."</a><br><br>");
+            echo("<div id='modal".$i."-".$ii."' class='custom_modal'>");
+            echo("<p><a onclick=\"closeallmodals()\">X</a></p>");
+            for($iii = 0; $iii < count($names); $iii++){
+                if($names[$iii][2] == $folders[$ii] and $names[$iii][1] == $courses[$i][1]){
+                    echo("<p><a href='uploads/" . $names[$iii][0] . "'>" . $names[$iii][0] . "</a></p>");
+                }
+            }
+            echo("</div>");
         }
         echo("</div>");
     }
