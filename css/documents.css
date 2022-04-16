@@ -3,3 +3,28 @@
 body{
     font-family: 'Roboto', sans-serif;
 }
+
+.uploadform{
+    border: dashed;
+    margin: 50px;
+    padding: 50px;
+    background: linear-gradient(135deg, #79aafc, #c2d2fc);
+    border-radius: 20px;
+    color: #fff;
+}
+
+.courseselectordiv {
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+.formheader {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+
+.forminnerdiv {
+    text-align: center;
+}

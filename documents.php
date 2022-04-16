@@ -45,12 +45,19 @@ if($_SESSION['role'] == 'tutor') {
 
     if (count($coursesArray) > 0) {
         echo "
-        <form method=\"post\" onsubmit=\"return validation();\" action=\"/php/documents.php\" enctype=\"multipart/form-data\">
-        <input id=\"dateFrom\" type=\"date\" name=\"dateFrom\"/>
+        <form method=\"post\" onsubmit=\"return validation();\" action=\"/php/documents.php\" enctype=\"multipart/form-data\" class=\"uploadform\">
+        <p class=\"formheader\"> Upload File to Course </p><br>
+        <div class=\"forminnerdiv\">
+        <label>Available from:</label><br>
+        <input id=\"dateFrom\" type=\"date\" name=\"dateFrom\"/> <br><br>
+        <label>Until:</label><br>
         <input id=\"dateUntil\" type=\"date\" name=\"dateUntil\"/>
-        <p id=\"DateError\" style=\"color: red;\"><p>
+        <p id=\"DateError\" style=\"color: red;\"><p><br>
+        <label>Folder:</label><br>
         <input id=\"directory\" type=\"text\" name=\"folder\" value=\"root\"/>
-        <p id=\"dirError\" style=\"color: red;\"><p>
+        <p id=\"dirError\" style=\"color: red;\"><p><br>
+        <div class=\"courseselectordiv\">
+        <label>Course:</label>
         <select multiple=\"multiple\" id=\"courseId\" name=\"courseId[]\">
         ";
         for($i = 0; $i < count($coursesArray); $i++) {
@@ -58,10 +65,12 @@ if($_SESSION['role'] == 'tutor') {
         }
         echo "
         </select>
-        <p id=\"courseError\" style=\"color: red;\"><p>
+        </div>
+        <p id=\"courseError\" style=\"color: red;\"><p><br>
         <input id=\"UploadFile\" type=\"file\" name=\"uploadFile\"/>
-        <p id=\"FileError\" style=\"color: red;\"><p>
+        <p id=\"FileError\" style=\"color: red;\"><p><br>
         <input type=\"submit\" value=\"Submit\"/>
+        </div>
         </form>
         ";
     }
