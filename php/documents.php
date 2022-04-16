@@ -21,6 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
     $pathInfo = pathinfo($fileName);
     $extension = $pathInfo["extension"];
 
+    $available = $_POST['available'];
     $datefrom = mysqli_real_escape_string($conn, $_POST["dateFrom"]);
     $dateuntil = mysqli_real_escape_string($conn, $_POST["dateUntil"]);
     $ownerid = $_SESSION['id'];
@@ -28,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
     $path_move = "../uploads/" . $fileName;
     $path_real = "uploads/" . $fileName;
 
-    $sqlInsertFile = "INSERT INTO `resource`(`id`, `name`, `datefrom`, `dateuntil`, `ownerid`, `extension`, `size`, `path`, `folder`) VALUES (null,'" . $fileName . "','" . $datefrom . "','" . $dateuntil . "','" . $ownerid ."','" . $extension . "','" . $fileSize . "','" . $path_real . "','" . $folder . "')";
+    $sqlInsertFile = "INSERT INTO `resource`(`id`, `name`, `datefrom`, `dateuntil`, `ownerid`, `extension`, `size`, `path`, `folder`, `available`) VALUES (null,'" . $fileName . "','" . $datefrom . "','" . $dateuntil . "','" . $ownerid ."','" . $extension . "','" . $fileSize . "','" . $path_real . "','" . $folder . "','" . $available ."')";
 
     $sqlgetfileid = "SELECT MAX(`id`) AS idmax FROM `resource`";
     $fileidresult = $conn->query($sqlgetfileid);

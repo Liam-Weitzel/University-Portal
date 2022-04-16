@@ -21,7 +21,7 @@ include("embeds/navbar.php");
 
 <p id="documentslist"></p>
 <button onclick="getDocumentsDataAJAX();">refresh</button>
-<br><br><br><br><br><br>
+<br><br>
 
 <?php
 if($_SESSION['role'] == 'tutor') {
@@ -69,6 +69,8 @@ if($_SESSION['role'] == 'tutor') {
         <p id=\"courseError\" style=\"color: red;\"><p><br>
         <input id=\"UploadFile\" type=\"file\" name=\"uploadFile\"/>
         <p id=\"FileError\" style=\"color: red;\"><p><br>
+        <label>Available to students:</label>
+        <input type=\"checkbox\" id=\"available\" name=\"available\" value=\"available\"><br><br>
         <input type=\"submit\" value=\"Submit\"/>
         </div>
         </form>

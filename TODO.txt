@@ -1,4 +1,4 @@
-Only display files if conditions are met (date, course)
+Only display files if conditions are met (date, course, availability)
 Display files using folder structure (course, folder)
 
 Quiz system

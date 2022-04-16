@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 15, 2022 at 06:50 PM
+-- Generation Time: Apr 16, 2022 at 04:04 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -90,14 +90,16 @@ CREATE TABLE IF NOT EXISTS `courseusingresource` (
   `resourceid` int(11) NOT NULL,
   `courseid` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `courseusingresource`
 --
 
 INSERT INTO `courseusingresource` (`id`, `resourceid`, `courseid`) VALUES
-(1, 1, 2);
+(1, 1, 2),
+(2, 2, 2),
+(3, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -116,15 +118,18 @@ CREATE TABLE IF NOT EXISTS `resource` (
   `size` int(11) NOT NULL,
   `path` varchar(255) NOT NULL,
   `folder` varchar(255) NOT NULL,
+  `available` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `resource`
 --
 
-INSERT INTO `resource` (`id`, `name`, `datefrom`, `dateuntil`, `ownerid`, `extension`, `size`, `path`, `folder`) VALUES
-(1, 'loremipsum.txt', '2022-04-16', '2022-04-29', 24, 'txt', 16, 'uploads/loremipsum.txt', 'root');
+INSERT INTO `resource` (`id`, `name`, `datefrom`, `dateuntil`, `ownerid`, `extension`, `size`, `path`, `folder`, `available`) VALUES
+(1, 'loremipsum.txt', '2022-04-16', '2022-04-29', 24, 'txt', 16, 'uploads/loremipsum.txt', 'root', 'available'),
+(2, 'second_file.txt', '2022-04-17', '2022-04-20', 24, 'txt', 0, 'uploads/second_file.txt', 'root', ''),
+(3, 'third_file.txt', '2022-04-21', '2022-04-30', 24, 'txt', 0, 'uploads/third_file.txt', 'root', 'available');
 
 -- --------------------------------------------------------
 
