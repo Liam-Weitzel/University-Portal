@@ -41,6 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
             }
         }
         $folders = array_unique($folders);
+        $folders = array_values($folders);
 
         for($ii = 0; $ii < count($folders); $ii++){
             echo("<a href=\"#\" onclick=\"openmodal(".$i.",".$ii.")\">".$folders[$ii]."</a><br><br>");
