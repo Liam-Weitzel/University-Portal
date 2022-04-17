@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
             $result3 = $conn->query($sql3);
 
             while ($record3 = mysqli_fetch_array($result3)){
-                array_push($names, array($record3['name'], $record1['courseid'], $record3['folder']));
+                array_push($names, array($record3['name'], $record1['courseid'], $record3['folder'], $record3['quiz']));
             }
         }
     }
@@ -49,7 +49,11 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
             echo("<p><a onclick=\"closeallmodals()\">X</a></p>");
             for($iii = 0; $iii < count($names); $iii++){
                 if($names[$iii][2] == $folders[$ii] and $names[$iii][1] == $courses[$i][1]){
-                    echo("<p><a href='uploads/" . $names[$iii][0] . "'>" . $names[$iii][0] . "</a></p>");
+                    if ($names[$iii][3] == "quiz"){
+                        echo("<a href='../displayquiz.php?quiz=".$names[$iii][0]."'>".$names[$iii][0]."</a><br>");
+                    } else {
+                        echo("<p><a href='../uploads/" . $names[$iii][0] . "'>" . $names[$iii][0] . "</a></p>");
+                    }
                 }
             }
             echo("</div>");
@@ -67,6 +71,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
     $extension = $pathInfo["extension"];
 
     $available = $_POST['available'];
+    $quiz = $_POST['quiz'];
     $datefrom = mysqli_real_escape_string($conn, $_POST["dateFrom"]);
     $dateuntil = mysqli_real_escape_string($conn, $_POST["dateUntil"]);
     $ownerid = $_SESSION['id'];
@@ -74,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getdocuments'])) {
     $path_move = "../uploads/" . $fileName;
     $path_real = "uploads/" . $fileName;
 
-    $sqlInsertFile = "INSERT INTO `resource`(`id`, `name`, `datefrom`, `dateuntil`, `ownerid`, `extension`, `size`, `path`, `folder`, `available`) VALUES (null,'" . $fileName . "','" . $datefrom . "','" . $dateuntil . "','" . $ownerid ."','" . $extension . "','" . $fileSize . "','" . $path_real . "','" . $folder . "','" . $available ."')";
+    $sqlInsertFile = "INSERT INTO `resource`(`id`, `name`, `datefrom`, `dateuntil`, `ownerid`, `extension`, `size`, `path`, `folder`, `available`, `quiz`) VALUES (null,'" . $fileName . "','" . $datefrom . "','" . $dateuntil . "','" . $ownerid ."','" . $extension . "','" . $fileSize . "','" . $path_real . "','" . $folder . "','" . $available . "','" . $quiz . "')";
 
     $sqlgetfileid = "SELECT MAX(`id`) AS idmax FROM `resource`";
     $fileidresult = $conn->query($sqlgetfileid);

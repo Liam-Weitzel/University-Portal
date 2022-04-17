@@ -1,6 +1,4 @@
-Quiz system (documents page)
-prevent students from taking quiz again
-keep record of student scores and let tutors see these scores (tutor page, progress page)
+Let tutors and students see quiz scores (tutor page, progress page)
 
 allow tutors to authorize students to their course (tutor page)
 tutors can add to and remove from their courses timetable (tutor page)

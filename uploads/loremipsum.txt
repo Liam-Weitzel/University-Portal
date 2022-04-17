@@ -1,1 +1,15 @@
-placeholder file
+What is the capital of the UK
+Riga
+London
+Munich
+2
+What is the capital of the NL
+Riga
+London
+Amsterdam
+3
+What is the capital of the Latvia
+Riga
+London
+Amsterdam
+1

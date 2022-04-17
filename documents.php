@@ -73,6 +73,8 @@ if($_SESSION['role'] == 'tutor') {
         <p id=\"FileError\" style=\"color: red;\"><p><br>
         <label>Available to students:</label>
         <input type=\"checkbox\" id=\"available\" name=\"available\" value=\"available\"><br><br>
+        <label>Is this a quiz?</label>
+        <input type=\"checkbox\" id=\"quiz\" name=\"quiz\" value=\"quiz\"><br><br>
         <input type=\"submit\" value=\"Submit\"/>
         </div>
         </form>
