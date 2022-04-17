@@ -13,17 +13,22 @@
             <li class="nav-item <?php echo ($_SESSION['activepage'] == 'dashboard') ? 'active' : ''; ?>">
                 <a class="nav-link" href="../index.php"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
-            <li class="nav-item <?php echo ($_SESSION['activepage'] == 'contacts') ? 'active' : ''; ?>">
-                <a class="nav-link" href="#"><i class="far fa-address-book"></i>Contacts</a>
+            <li class="nav-item <?php echo ($_SESSION['activepage'] == 'attendance') ? 'active' : ''; ?>">
+                <a class="nav-link" href="#"><i class="far fa-address-book"></i>Attendance</a>
             </li>
-            <li class="nav-item <?php echo ($_SESSION['activepage'] == 'components') ? 'active' : ''; ?>">
-                <a class="nav-link" href="#"><i class="far fa-clone"></i>Components</a>
-            </li>
+            <?php if ($_SESSION['role'] == 'tutor') { ?>
+                <li class="nav-item <?php echo ($_SESSION['activepage'] == 'tutor-page') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="#"><i class="fas fa-users"></i>Tutor Page</a>
+                </li> <?php } ?>
+            <?php if ($_SESSION['role'] == 'admin') { ?>
+            <li class="nav-item <?php echo ($_SESSION['activepage'] == 'admin-page') ? 'active' : ''; ?>">
+                <a class="nav-link" href="#"><i class="far fa-clone"></i>Admin page</a>
+            </li> <?php } ?>
             <li class="nav-item <?php echo ($_SESSION['activepage'] == 'timetable') ? 'active' : ''; ?>">
                 <a class="nav-link" href="../timetable.php"><i class="far fa-calendar-alt"></i>Timetable</a>
             </li>
-            <li class="nav-item <?php echo ($_SESSION['activepage'] == 'charts') ? 'active' : ''; ?>">
-                <a class="nav-link" href="#"><i class="far fa-chart-bar"></i>Charts</a>
+            <li class="nav-item <?php echo ($_SESSION['activepage'] == 'progress') ? 'active' : ''; ?>">
+                <a class="nav-link" href="#"><i class="far fa-chart-bar"></i>Progress</a>
             </li>
             <li class="nav-item <?php echo ($_SESSION['activepage'] == 'documents') ? 'active' : ''; ?>">
                 <a class="nav-link" href="../documents.php"><i class="far fa-copy"></i>Documents</a>
