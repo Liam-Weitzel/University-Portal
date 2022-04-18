@@ -22,6 +22,23 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getquiz'])) {
             echo("Student ID: ".$record2['studentid'].", Score: ".$record2['percentcorrect']."<br>");
         }
     }
+} else if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['studentprogress'])) {
+   /*
+   Total number of quizes per course:
+   SELECT COUNT(`courseid`) AS '#ofquizes', `courseid` FROM `resource` JOIN `courseusingresource` ON resource.`id` = `resourceid` WHERE `quiz`='quiz' GROUP BY `courseid`
+
+   Number of quizes done per student per course:
+   SELECT `courseid`, `userid`, COUNT(`userid`) AS '#quizesdone' FROM (SELECT * FROM (SELECT `quizname`, `userid` FROM `quizresults` JOIN `studenttakingcourse` ON `studentid` = `userid` GROUP BY `quizresults`.`id` ) AS A JOIN `resource` ON `quizname` = `name`) AS B JOIN `courseusingresource` ON B.`id` = `resourceid` GROUP BY `courseid`, `userid`
+
+   Complete query:
+   SELECT C.`courseid`, `userid`, `#quizesdone`/`#ofquizes` AS 'progress' FROM (SELECT `courseid`, `userid`, COUNT(`userid`) AS '#quizesdone' FROM (SELECT * FROM (SELECT `quizname`, `userid` FROM `quizresults` JOIN `studenttakingcourse` ON `studentid` = `userid` GROUP BY `quizresults`.`id` ) AS A JOIN `resource` ON `quizname` = `name`) AS B JOIN `courseusingresource` ON B.`id` = `resourceid` GROUP BY `courseid`, `userid`) AS C JOIN (SELECT COUNT(`courseid`) AS '#ofquizes', `courseid` FROM `resource` JOIN `courseusingresource` ON resource.`id` = `resourceid` WHERE `quiz`='quiz' GROUP BY `courseid`) AS D ON C.`courseid` = D.`courseid`
+   */
+   $sqlgetprogress = "SELECT C.`courseid`, `userid`, `#quizesdone`/`#ofquizes` AS 'progress' FROM (SELECT `courseid`, `userid`, COUNT(`userid`) AS '#quizesdone' FROM (SELECT * FROM (SELECT `quizname`, `userid` FROM `quizresults` JOIN `studenttakingcourse` ON `studentid` = `userid` GROUP BY `quizresults`.`id` ) AS A JOIN `resource` ON `quizname` = `name`) AS B JOIN `courseusingresource` ON B.`id` = `resourceid` GROUP BY `courseid`, `userid`) AS C JOIN (SELECT COUNT(`courseid`) AS '#ofquizes', `courseid` FROM `resource` JOIN `courseusingresource` ON resource.`id` = `resourceid` WHERE `quiz`='quiz' GROUP BY `courseid`) AS D ON C.`courseid` = D.`courseid`";
+   $getprogressresult = $conn->query($sqlgetprogress);
+
+   while ($record = mysqli_fetch_array($getprogressresult)){
+       echo("Course ID: ".$record['courseid'].", Student ID: ".$record['userid'].", Progress: ".$record['progress']."<br>");
+   }
 } else if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getstudentsauthorize'])) {
     $sqlcourseowner = "SELECT id FROM course WHERE ownerid = '".$_SESSION['id']."'";
     $courseownerresult = $conn->query($sqlcourseowner);
@@ -37,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET" and isset($_GET['getquiz'])) {
             echo($record2['course']."<br>");
             echo("<form action='../php/tutor-page.php' method='post'>
                 <input type='hidden' name='studentid' value='".$record2['id']."'>
-                <input type='submit' name='authorize' value='Authorize'><br>");
+                <input type='submit' name='authorize' value='Authorize'><br><br>");
         }
     }
 } else if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['studentid'])) {

@@ -35,6 +35,14 @@ include("embeds/navbar.php");
 
 <br>
 
+<div class="studentprogressouterdiv">
+<p class="studentprogressheader">Student progress:</p>
+<div id="studentprogress"></div><br>
+<button onclick="getStudentProgressAJAX();">refresh</button>
+</div>
+
+<br>
+
 <div class="coursetimetablesouterdiv">
 <p class="coursetimetablesheader">Change my courses timetables:</p>
 <div id="coursetimetables"></div><br>

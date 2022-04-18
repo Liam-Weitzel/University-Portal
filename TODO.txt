@@ -1,5 +1,4 @@
 Tutor page:
-Tutors can see their students progress per course
 Tutors can see their students attendance per course
 
 Admin page:
