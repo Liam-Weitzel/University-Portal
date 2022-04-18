@@ -33,6 +33,21 @@ include("embeds/navbar.php");
 <button onclick="getQuizResultsAJAX();">refresh</button>
 </div>
 
+<br>
+
+<div class="coursetimetablesouterdiv">
+<p class="coursetimetablesheader">Change my courses timetables:</p>
+<div id="coursetimetables"></div><br>
+<form action='../php/tutor-page.php' method='post'>
+<label>Course ID:</label>
+<input type='text' value='0' name='courseid'>
+<input type='submit' id='addcourse' name='addcourse' value='Add Course' />
+</form>
+<button onclick="getCoursesTimetableAJAX();">refresh</button>
+</div>
+
+<br>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
 <script type="text/javascript" src="js/tutor-page.js"></script>

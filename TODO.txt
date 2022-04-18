@@ -1,7 +1,6 @@
 Tutor page:
 Tutors can see their students progress per course
 Tutors can see their students attendance per course
-Tutors can edit their courses timetable
 
 Admin page:
 Admin can create new courses and assign tutors to them
