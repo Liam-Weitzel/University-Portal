@@ -17,10 +17,18 @@ include("embeds/preamble.php");
 include("embeds/navbar.php");
 ?>
 
-<body onload="getQuizResultsAJAX();">
+<body onload="getAllAJAX();">
+
+<div class="studentstoauthorizeouterdiv">
+<p class="studentstoauthorizeheader">Students to authorize:</p>
+<div id="studentstoauthorize"></div><br>
+<button onclick="getStudentsToAuthorizeAJAX();">refresh</button>
+</div>
+
+<br>
 
 <div class="quizresultsouterdiv">
-<p class="quizresultsheader">Quiz results</p>
+<p class="quizresultsheader">Quiz results:</p>
 <div id="quizresults"></div><br>
 <button onclick="getQuizResultsAJAX();">refresh</button>
 </div>
