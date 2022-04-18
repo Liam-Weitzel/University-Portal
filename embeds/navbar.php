@@ -18,7 +18,7 @@
             </li>
             <?php if ($_SESSION['role'] == 'tutor') { ?>
                 <li class="nav-item <?php echo ($_SESSION['activepage'] == 'tutor-page') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="#"><i class="fas fa-users"></i>Tutor Page</a>
+                    <a class="nav-link" href="../tutor-page.php"><i class="fas fa-users"></i>Tutor Page</a>
                 </li> <?php } ?>
             <?php if ($_SESSION['role'] == 'admin') { ?>
             <li class="nav-item <?php echo ($_SESSION['activepage'] == 'admin-page') ? 'active' : ''; ?>">

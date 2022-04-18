@@ -1,12 +1,19 @@
-Let tutors and students see quiz scores (tutor page, progress page)
+Tutor page:
+Tutors can see their students progress per course
+Tutors can see their students attendance per course
+Tutors can edit their courses timetable
+Tutors can authorize students to their courses
 
-allow tutors to authorize students to their course (tutor page)
-tutors can add to and remove from their courses timetable (tutor page)
-a progress bar for each student per course (progress page) (tutors can see each students progress of their course (tutor page))
-online registration system for each lecture/ seminar, store attendance per student (attendance page)
+Admin page:
+Admin can create new courses and assign tutors to them
+Admin can authorize new accounts and assign roles to them
 
-Create admin role, admin role can:
-create new courses and assign tutors to them (admin page)
-authorize new account creations and assign roles to them (admin page)
+Dashboard page:
+Dashboard page is a static page explaining what the site is and how to use it etc.
 
-dashboard page = static page explaining what the site is and how to use it etc.
+Attendance page:
+Attendance page shows attendance per student per course
+Allows student to register online for each lecture/ seminar
+
+Progress page:
+Progress page shows progress per student per course
