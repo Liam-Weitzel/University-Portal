@@ -1,10 +1,6 @@
 Tutor page:
 Tutors can see their students attendance per course
 
-Admin page:
-Admin can create new courses and assign tutors to them
-Admin can authorize new accounts and assign roles to them
-
 Dashboard page:
 Dashboard page is a static page explaining what the site is and how to use it etc.
 

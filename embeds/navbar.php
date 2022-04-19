@@ -22,7 +22,7 @@
                 </li> <?php } ?>
             <?php if ($_SESSION['role'] == 'admin') { ?>
             <li class="nav-item <?php echo ($_SESSION['activepage'] == 'admin-page') ? 'active' : ''; ?>">
-                <a class="nav-link" href="#"><i class="far fa-clone"></i>Admin page</a>
+                <a class="nav-link" href="../admin-page.php"><i class="far fa-clone"></i>Admin page</a>
             </li> <?php } ?>
             <li class="nav-item <?php echo ($_SESSION['activepage'] == 'timetable') ? 'active' : ''; ?>">
                 <a class="nav-link" href="../timetable.php"><i class="far fa-calendar-alt"></i>Timetable</a>
