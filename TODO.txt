@@ -7,6 +7,3 @@ Dashboard page is a static page explaining what the site is and how to use it et
 Attendance page:
 Attendance page shows attendance per student per course
 Allows student to register online for each lecture/ seminar
-
-Progress page:
-Progress page shows progress per student per course

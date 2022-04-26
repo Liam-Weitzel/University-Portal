@@ -28,7 +28,7 @@
                 <a class="nav-link" href="../timetable.php"><i class="far fa-calendar-alt"></i>Timetable</a>
             </li>
             <li class="nav-item <?php echo ($_SESSION['activepage'] == 'progress') ? 'active' : ''; ?>">
-                <a class="nav-link" href="#"><i class="far fa-chart-bar"></i>Progress</a>
+                <a class="nav-link" href="../progress.php"><i class="far fa-chart-bar"></i>Progress</a>
             </li>
             <li class="nav-item <?php echo ($_SESSION['activepage'] == 'documents') ? 'active' : ''; ?>">
                 <a class="nav-link" href="../documents.php"><i class="far fa-copy"></i>Documents</a>
