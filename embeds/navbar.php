@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="../css/navbar.css">
 
 <nav class="navbar navbar-expand-custom navbar-mainbg">
-    <a class="navbar-brand navbar-logo" href="../index.php">Uni Portal</a>
+    <a class="navbar-brand navbar-logo" href="../index.php">Ace Training</a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars text-white"></i>
     </button>

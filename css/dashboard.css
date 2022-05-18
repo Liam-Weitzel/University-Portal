@@ -3,3 +3,12 @@
 body{
     font-family: 'Roboto', sans-serif;
 }
+
+p a {
+    font-weight: bold;
+    color: #e53b3b !important;
+}
+
+p {
+    padding: 5%;
+}

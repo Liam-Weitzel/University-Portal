@@ -3,3 +3,13 @@
 body{
     font-family: 'Roboto', sans-serif;
 }
+
+.outerdiv {
+    border: dashed;
+    margin: 50px;
+    padding: 50px;
+    background: linear-gradient(135deg, #79aafc, #c2d2fc);
+    border-radius: 20px;
+    color: #fff;
+    text-align: center;
+}

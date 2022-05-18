@@ -19,7 +19,7 @@ include("embeds/navbar.php");
 
 <body onload="getAllAJAX();">
 
-<div class="accountstoauthorizeouterdiv">
+<div class="outerdiv">
 <p class="accountstoauthorizeheader">Accounts to authorize:</p>
 <div id="accountstoauthorize"></div><br>
 <button onclick="getAccountsToAuthorizeAJAX();">refresh</button>
@@ -27,6 +27,7 @@ include("embeds/navbar.php");
 
 <br>
 
+<div class="outerdiv">
 <p class="createnewcourseheader">Create new course:</p>
 <form action='php/admin-page.php' method='post'>
 <label>Course name:</label>
@@ -37,6 +38,7 @@ include("embeds/navbar.php");
 <input type='text' value='' name='owner' id='owner'><br>
 <input type='submit' name='create' value='Create'>
 </form>
+</div>
 
 <br>
 

@@ -19,7 +19,7 @@ include("embeds/navbar.php");
 
 <body onload="getAllAJAX();">
 
-<div class="studentstoauthorizeouterdiv">
+<div class="outerdiv">
 <p class="studentstoauthorizeheader">Students to authorize:</p>
 <div id="studentstoauthorize"></div><br>
 <button onclick="getStudentsToAuthorizeAJAX();">refresh</button>
@@ -27,7 +27,7 @@ include("embeds/navbar.php");
 
 <br>
 
-<div class="quizresultsouterdiv">
+<div class="outerdiv">
 <p class="quizresultsheader">Quiz results:</p>
 <div id="quizresults"></div><br>
 <button onclick="getQuizResultsAJAX();">refresh</button>
@@ -35,7 +35,7 @@ include("embeds/navbar.php");
 
 <br>
 
-<div class="studentprogressouterdiv">
+<div class="outerdiv">
 <p class="studentprogressheader">Student progress:</p>
 <div id="studentprogress"></div><br>
 <button onclick="getStudentProgressAJAX();">refresh</button>
@@ -43,13 +43,13 @@ include("embeds/navbar.php");
 
 <br>
 
-<div class="coursetimetablesouterdiv">
+<div class="outerdiv">
 <p class="coursetimetablesheader">Change my courses timetables:</p>
 <div id="coursetimetables"></div><br>
 <form action='../php/tutor-page.php' method='post'>
 <label>Course ID:</label>
 <input type='text' value='0' name='courseid'>
-<input type='submit' id='addcourse' name='addcourse' value='Add Course' />
+<input type='submit' id='addcourse' name='addcourse' value='Add timetable to course' />
 </form>
 <button onclick="getCoursesTimetableAJAX();">refresh</button>
 </div>

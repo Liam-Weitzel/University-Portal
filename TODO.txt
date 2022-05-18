@@ -1,9 +1,6 @@
 Tutor page:
 Tutors can see their students attendance per course
 
-Dashboard page:
-Dashboard page is a static page explaining what the site is and how to use it etc.
-
 Attendance page:
 Attendance page shows attendance per student per course
 Allows student to register online for each lecture/ seminar

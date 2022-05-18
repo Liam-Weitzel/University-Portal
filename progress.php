@@ -19,7 +19,7 @@ include("embeds/navbar.php");
 
 <body onload="getProgressDataAJAX();">
 
-<div class="progressouterdiv">
+<div class="outerdiv">
 <p class="progressheader">Progress per course:</p>
 <div id="progress"></div><br>
 <button onclick="getProgressDataAJAX();">refresh</button>
